@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Salary Calculation - ISSNE</title>
+    <link rel="stylesheet" href="/CSS/salary.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Salary Calculation</h2>
+
+    <form id="salaryForm">
+        <input type="text" id="name" placeholder="Staff Name" required>
+        <input type="number" id="hours" placeholder="Total Hours Worked" required>
+        <input type="number" id="rate" placeholder="Salary per Hour" required>
+        <button type="submit">Calculate Salary</button>
+    </form>
+
+    <h3>Salary Prediction</h3>
+
+     <input type="number" id="daysWorked" placeholder="Days Worked">
+     <input type="number" id="remainingDays" placeholder="Remaining Days">
+     <button onclick="predictSalary()">Predict Salary</button>
+
+<p id="predictionResult"></p>
+
+
+    <h3>Salary Records</h3>
+    <table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Total Hours</th>
+            <th>Total Salary</th>
+            <th>Overtime</th>
+            <th>Performance</th>
+        </tr>
+    </thead>
+    <tbody id="salaryTable"></tbody>
+</table>
+
+<script src="../JS/salary.js"></script>
+
+
+    <br>
+    <a href="/HTML/dashboard.html">← Back to Dashboard</a>
+</div>
+</body>
+</html>

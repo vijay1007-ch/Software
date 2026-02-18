@@ -1,0 +1,33 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Industrial Staff Management - Login</title>
+  <link rel="stylesheet" href="/CSS/styles.css" />
+</head>
+<body>
+  <div class="login-container">
+    <h2>Staff Management Login</h2>
+    <form id="loginForm">
+      <a href="/HTML/homepage.html" style="color:#00f2fe; position:absolute; top:20px; left:20px;">Home</a>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter username" required/>
+      <br><br>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" placeholder="Enter password" required />
+      </marquee> <br><br>
+      <button onclick="window.location.href='dashboard.html'">Login</button>
+
+       <marquee behavior="scroll" direction="left" scrollamount="5" style="color: #ff0000; font-weight: bold;">
+        Warning: Unauthorized access is prohibited!!</marquee>
+    </form>
+    <p id="message"></p>
+    <p class="login-link" style="color:#00f2fe;">
+            No account ? create a account then   <a href="/HTML/signup.html">Sign Up</a>
+        </p>
+  </div>
+</script><script src="../JS/login.js"></script>
+
+</body>
+</html>

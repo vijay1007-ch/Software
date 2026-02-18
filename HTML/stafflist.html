@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff List - ISSNE</title>
+    <link rel="stylesheet" href="../CSS/addstaff.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Staff List</h2>
+
+    <input type="text" id="searchInput" placeholder="Search by Name" onkeyup="searchStaff()">
+    
+    <select onchange="filterGender(this.value)">
+        <option value="">Filter by Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+
+    <button onclick="sortBySalary()">Sort by Salary</button>
+    <button onclick="sortByAge()">Sort by Age</button>
+
+    <table id="staffTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <br>
+    <a href="addstaff.html">← Back to Add Staff</a>
+</div>
+
+<script src="../JS/script.js"></script>
+
+</body>
+</html>

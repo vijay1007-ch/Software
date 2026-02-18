@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance - ISSNE</title>
+    <link rel="stylesheet" href="../CSS/attendance.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Attendance Management</h2>
+
+    <form id="attendanceForm">
+
+        <select id="staffSelect" required>
+            <option value="">Select Staff</option>
+        </select>
+
+        <input type="date" id="date" required>
+
+        <input type="time" id="loginTime" required>
+        <input type="time" id="logoutTime" required>
+
+        <button type="submit">Submit Attendance</button>
+    </form>
+
+    <h3>Attendance Records</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Hours Worked</th>
+            </tr>
+        </thead>
+        <tbody id="attendanceTable"></tbody>
+    </table>
+
+    <br>
+    <a href="dashboard.html">← Back to Dashboard</a>
+</div>
+
+<script src="../JS/attendance.js"></script>
+
+</body>
+</html>
