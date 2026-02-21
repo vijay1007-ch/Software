@@ -2,34 +2,93 @@
 <html>
 <head>
     <title>Add Staff - ISSNE</title>
-    <link rel="stylesheet" href="../CSS/addstaff.css">
+    <link rel="stylesheet" href="/CSS/addstaff.css">
 </head>
 <body>
 
 <div class="container">
     <h2>Add New Staff</h2>
 
-    <form id="staffForm">
-        <input type="text" id="name" placeholder="Staff Name" required>
-        <input type="text" id="role" placeholder="Role" required>
-        <input type="number" id="age" placeholder="Age" required>
+ <form id="staffForm">
 
-        <select id="gender" required>
-            <option value="">Select Gender</option>
-            <option>Male</option>
-            <option>Female</option>
-        </select>
+  <div class="form-section">
+    <h3>Personal Details</h3>
 
-        <input type="number" id="salary" placeholder="Salary per Hour" required>
+    <input type="text" id="name" placeholder="Full Name" required>
 
-        <button type="submit">Add Staff</button>
-    </form>
+    <div class="row">
+      <input type="text" id="contact" placeholder="Contact" required>
+      <select id="gender" required>
+        <option value="">Gender</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </div>
 
-    <br>
-    <a href="stafflist.html">View Staff List →</a>
+    <div class="row">
+      <input type="number" id="age" placeholder="Age (Auto)" readonly>
+      <select id="blood">
+        <option value="">Blood Group</option>
+        <option>A+</option><option>A-</option>
+        <option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option>
+        <option>AB+</option><option>AB-</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>DOB</label>
+        <input type="date" id="dob" required>
+      </div>
+      <div>
+        <label>DOJ</label>
+        <input type="date" id="doj" required>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-section">
+    <h3>Work Details</h3>
+
+    <div class="row">
+      <input type="text" id="project" placeholder="Project" required>
+      <select id="shift" required>
+        <option value="">Shift</option>
+        <option>Day</option>
+        <option>Night</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <input type="text" id="experience" placeholder="Experience (Auto)" readonly>
+      <input type="number" id="salary" placeholder="Salary" min="0" required>
+    </div>
+
+  </div>
+
+  <div class="form-section">
+    <h3>Medical Details</h3>
+
+    <input type="text" id="health" placeholder="Health Status">
+    <input type="text" id="medical" placeholder="Medical History">
+    <input type="text" id="allergies" placeholder="Allergies">
+  </div>
+
+  <div class="form-section">
+    <h3>Profile Photo</h3>
+    <input type="file" id="photo" accept="image/*">
+  </div>
+
+</form>
+<script src="/JS/addstaff.js"></script>
+<div class="btn-group">
+    <button type="submit" class="main-btn">Add Staff</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" onclick="location.href='staff.html'" class="secondary-btn">See the Staff</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" onclick="location.href='dashboard.html'" class="secondary-btn">Dashboard</button>
 </div>
-
-<script src="../JS/script.js"></script>
-
+</div>
 </body>
 </html>

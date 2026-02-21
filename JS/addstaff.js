@@ -1,118 +1,86 @@
-let staffList = JSON.parse(localStorage.getItem("staffData")) || [];
-let editIndex = -1;
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded", function(){
-    displayStaff();
+    const form = document.getElementById("staffForm");
+    const dob = document.getElementById("dob");
+    const doj = document.getElementById("doj");
+    const age = document.getElementById("age");
+    const exp = document.getElementById("experience");
 
-    document.getElementById("staffForm").addEventListener("submit", function(e){
+    dob.addEventListener("change", function () {
+
+        const birth = new Date(this.value);
+        const now = new Date();
+
+        let calculatedAge = now.getFullYear() - birth.getFullYear();
+        const m = now.getMonth() - birth.getMonth();
+
+        if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) {
+            calculatedAge--;
+        }
+
+        if (calculatedAge < 18 || calculatedAge > 55) {
+            alert("Age must be between 18 and 55");
+            age.value = "";
+            return;
+        }
+
+        age.value = calculatedAge;
+    });
+
+    doj.addEventListener("change", function () {
+
+        const join = new Date(this.value);
+        const now = new Date();
+
+        let years = now.getFullYear() - join.getFullYear();
+        exp.value = years + " Years";
+    });
+
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        let name = document.getElementById("name").value;
-        let role = document.getElementById("role").value;
-        let age = document.getElementById("age").value;
-        let gender = document.getElementById("gender").value;
-        let salary = document.getElementById("salary").value;
+        const reader = new FileReader();
+        const photoInput = document.getElementById("photo");
 
-        let performance = calculatePerformance(age, salary);
-
-        let staff = { name, role, age, gender, salary, performance };
-
-        if(editIndex === -1){
-            staffList.push(staff);
+        if (photoInput.files.length > 0) {
+            reader.onload = function (event) {
+                saveData(event.target.result);
+            };
+            reader.readAsDataURL(photoInput.files[0]);
         } else {
-            staffList[editIndex] = staff;
-            editIndex = -1;
+            saveData("");
         }
 
-        localStorage.setItem("staffData", JSON.stringify(staffList));
-        displayStaff();
-        this.reset();
+        function saveData(photo) {
+
+            let staffList = JSON.parse(localStorage.getItem("staffData")) || [];
+
+            const staff = {
+                name: name.value,
+                contact: contact.value,
+                age: age.value,
+                dob: dob.value,
+                doj: doj.value,
+                experience: exp.value,
+                project: project.value,
+                shift: shift.value,
+                health: health.value,
+                salary: salary.value,
+                photo: photo
+            };
+
+            staffList.push(staff);
+
+            localStorage.setItem("staffData", JSON.stringify(staffList));
+
+            alert("Staff Added Successfully");
+            window.location.href = "staff.html";
+        }
+
     });
+
 });
 
-function displayStaff(){
-    let tbody = document.querySelector("#staffTable tbody");
-    tbody.innerHTML = "";
-
-    staffList.forEach((staff, index) => {
-        addRow(staff, index);
-    });
-}
-
-function calculatePerformance(age, salary){
-    if(salary > 500) return "Excellent";
-    if(salary > 300) return "Good";
-    return "Average";
-}
-
-function deleteStaff(index){
-    staffList.splice(index, 1);
-    localStorage.setItem("staffData", JSON.stringify(staffList));
-    displayStaff();
-}
-
-function editStaff(index){
-    let staff = staffList[index];
-
-    document.getElementById("name").value = staff.name;
-    document.getElementById("role").value = staff.role;
-    document.getElementById("age").value = staff.age;
-    document.getElementById("gender").value = staff.gender;
-    document.getElementById("salary").value = staff.salary;
-
-    editIndex = index;
-}
-
-function searchStaff() {
-    let input = document.getElementById("searchInput").value.toLowerCase();
-    let tbody = document.querySelector("#staffTable tbody");
-    tbody.innerHTML = "";
-
-    staffList.forEach((staff, index) => {
-        if(staff.name.toLowerCase().includes(input)) {
-            addRow(staff, index);
-        }
-    });
-}
-
-function filterByGender(gender){
-    let tbody = document.querySelector("#staffTable tbody");
-    tbody.innerHTML = "";
-
-    staffList.forEach((staff, index) => {
-        if(gender === "" || staff.gender === gender){
-            addRow(staff, index);
-        }
-    });
-}
-
-function sortBySalary(){
-    staffList.sort((a,b) => a.salary - b.salary);
-    localStorage.setItem("staffData", JSON.stringify(staffList));
-    displayStaff();
-}
-
-function sortByAge(){
-    staffList.sort((a,b) => a.age - b.age);
-    localStorage.setItem("staffData", JSON.stringify(staffList));
-    displayStaff();
-}
-
-function addRow(staff, index){
-    let tbody = document.querySelector("#staffTable tbody");
-    let row = `
-        <tr>
-            <td>${staff.name}</td>
-            <td>${staff.role}</td>
-            <td>${staff.age}</td>
-            <td>${staff.gender}</td>
-            <td>₹ ${staff.salary}</td>
-            <td>${staff.performance}</td>
-            <td>
-                <button onclick="editStaff(${index})">Edit</button>
-                <button onclick="deleteStaff(${index})">Delete</button>
-            </td>
-        </tr>
-    `;
-    tbody.innerHTML += row;
+function goStaff() {
+    window.location.href = "staff.html";
 }

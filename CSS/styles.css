@@ -64,3 +64,17 @@ body {
     text-align: center;
     margin-top: 15px;
 }
+
+.view-btn {
+    padding: 8px 16px;
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.view-btn:hover {
+    background: linear-gradient(90deg, #15803d, #16a34a);
+}

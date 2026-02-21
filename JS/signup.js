@@ -11,5 +11,5 @@ function validateForm() {
 
     message.style.color = "lightgreen";
     message.innerText = "Account created successfully!";
-    return false; // demo purpose
+    e.preventDefault();
 }

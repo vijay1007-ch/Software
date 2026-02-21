@@ -1,8 +1,6 @@
-body {
+html, body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    background: #f4f7fa;
+    padding: 0;
 }
 
 /* Sidebar */
@@ -14,9 +12,7 @@ body {
     padding: 20px;
 }
 
-.sidebar h2 {
-    margin-bottom: 30px;
-}
+
 
 .sidebar a {
     display: block;
@@ -35,12 +31,12 @@ body {
     flex: 1;
     padding: 40px;
 }
-
-.main-content h1 {
-    margin-bottom: 30px;
+.main-content {
+    margin-left: 230px;   /* MUST MATCH SIDEBAR WIDTH */
+    padding: 40px;
+    min-height: 100vh;
+    background: #f1f5f9;
 }
-
-/* Cards Layout */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -71,3 +67,58 @@ body {
     font-size: 22px;
     font-weight: bold;
 }
+
+.view-btn {
+    padding: 8px 16px;
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.view-btn:hover {
+    background: linear-gradient(90deg, #15803d, #16a34a);
+}
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(180deg, #0f766e, #22c55e);
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  /* KEY FIX */
+    padding: 20px 15px;
+    box-sizing: border-box;
+}
+
+.top-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+.top-links {
+    flex-grow: 1;
+}
+
+.bottom-links {
+    border-top: 1px solid rgba(255,255,255,0.3);
+    padding-top: 15px;
+}
+
+.bottom-links a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;
+}
+
+.bottom-links a:hover {
+    color: black;
+}
+

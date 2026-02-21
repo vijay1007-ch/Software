@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Staff List</title>
+    <link rel="stylesheet" href="/CSS/staff.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Staff List</h2>
+
+    <div class="top-bar">
+        <input type="text" id="search" placeholder="Search by name..." onkeyup="searchStaff()">
+        <button onclick="location.href='addstaff.html'">+  Add Staff</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Project</th>
+                <th>Shift</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="staffTableBody"></tbody>
+    </table>
+
+</div>
+
+
+<!-- MODAL -->
+<div id="staffModal" class="modal">
+    <div class="modal-content">
+
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h3>Staff Details</h3>
+
+        <div class="profile-section">
+            <img id="modalPhoto" src="" alt="Profile">
+        </div>
+
+        <table class="details-table">
+            <tr><td>Name</td><td id="modalName"></td></tr>
+            <tr><td>Contact</td><td id="modalContact"></td></tr>
+            <tr><td>Age</td><td id="modalAge"></td></tr>
+            <tr><td>DOB</td><td id="modalDOB"></td></tr>
+            <tr><td>DOJ</td><td id="modalDOJ"></td></tr>
+            <tr><td>Project</td><td id="modalProject"></td></tr>
+            <tr><td>Shift</td><td id="modalShift"></td></tr>
+            <tr><td>Health</td><td id="modalHealth"></td></tr>
+            <tr><td>Salary</td><td id="modalSalary"></td></tr>
+        </table>
+
+    </div>
+</div>
+
+<script src="/JS/staff.js"></script>
+
+</body>
+</html>

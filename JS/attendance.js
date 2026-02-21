@@ -43,8 +43,9 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     function displayAttendance(){
-        let table = document.getElementById("attendanceTable");
-        table.innerHTML = "";
+        let tbody = document.querySelector("#salaryTable tbody");
+            tbody.innerHTML = "";
+
 
         attendanceList.forEach(record => {
             let row = `
