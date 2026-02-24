@@ -1,7 +1,113 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <p>
-            hi rah pukka
-        </p>
-    </body>
+<head>
+    <title>Projects - ISSNE</title>
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="comet-navbar">
+        <div class="nav-brand">
+            <h2>🚀 ISSNE</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/HTML/dashboard.html">📊 Dashboard</a></li>
+            <li><a href="/HTML/addstaff.html">➕ Add Staff</a></li>
+            <li><a href="/HTML/attendance.html">📋 Attendance</a></li>
+            <li><a href="/HTML/salary.html">💰 Salary</a></li>
+            <li><a href="/HTML/staff.html">👥 Staff</a></li>
+            <li><a href="/HTML/projects.html" class="active">📋 Projects</a></li>
+            <li><a href="/HTML/machinedetails.html">⚙️ Machines</a></li>
+            <li><a href="/HTML/settings.html">⚙️ Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="control-panel">
+            <h1>📋 ISSNE Projects Management</h1>
+            <p>Manage Industrial Projects & Assignments</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-icon">📋</span>
+                <div class="stat-number" id="totalProjects">0</div>
+                <div class="stat-label">Total Projects</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🔄</span>
+                <div class="stat-number" id="inProgressProjects">0</div>
+                <div class="stat-label">In Progress</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">✅</span>
+                <div class="stat-number" id="completedProjects">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">💰</span>
+                <div class="stat-number" id="totalBudget">₹0</div>
+                <div class="stat-label">Total Budget</div>
+            </div>
+        </div>
+
+        <!-- Add New Project -->
+        <div class="quick-actions">
+            <h2>➕ Add New Project</h2>
+            <form id="projectForm" style="margin-top: 20px;">
+                <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🏗️ Project Name *</label>
+                        <input type="text" id="projectName" required style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">📍 Location</label>
+                        <input type="text" id="projectLocation" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">📅 Start Date</label>
+                        <input type="date" id="projectStartDate" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">📅 End Date</label>
+                        <input type="date" id="projectEndDate" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">💰 Budget (₹)</label>
+                        <input type="number" id="projectBudget" placeholder="0" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🎯 Status</label>
+                        <select id="projectStatus" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                            <option value="Planning">Planning</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="On Hold">On Hold</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; text-align: center;">
+                    <button type="submit" class="glow-btn">➕ Add Project</button>
+                    <button type="button" onclick="clearProjectForm()" class="glow-btn" style="background: rgba(255,255,255,0.2);">Clear</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Projects List -->
+        <div class="recent-activity">
+            <h2>📁 Active Projects</h2>
+            <div style="margin-bottom: 20px;">
+                <input type="text" id="projectSearch" placeholder="🔍 Search projects..." onkeyup="filterProjects()" style="width: 100%; padding: 12px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
+            </div>
+            <div class="recent-staff-grid" id="projectsGrid">
+                <!-- JS populates -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/datasync.js"></script>
+    <script src="/JS/projects.js"></script>
+</body>
 </html>

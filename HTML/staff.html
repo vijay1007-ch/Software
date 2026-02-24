@@ -1,63 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Staff List</title>
-    <link rel="stylesheet" href="/CSS/staff.css">
+    <title>Staff List - ISSNE</title>
+    <link rel="stylesheet" href="/CSS/dashboard.css">
 </head>
 <body>
+    <!-- NAVBAR -->
+    <nav class="comet-navbar">
+        <div class="nav-brand">
+            <h2>🚀 ISSNE</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/HTML/dashboard.html">📊 Dashboard</a></li>
+            <li><a href="/HTML/addstaff.html">➕ Add Staff</a></li>
+            <li><a href="/HTML/attendance.html">📋 Attendance</a></li>
+            <li><a href="/HTML/salary.html">💰 Salary</a></li>
+            <li><a href="/HTML/staff.html" class="active">👥 Staff</a></li>
+            <li><a href="/HTML/projects.html">📋 Projects</a></li>
+            <li><a href="/HTML/machinedetails.html">⚙️ Machines</a></li>
+            <li><a href="/HTML/settings.html">⚙️ Settings</a></li>
+        </ul>
+    </nav>
 
-<div class="container">
-
-    <h2>Staff List</h2>
-
-    <div class="top-bar">
-        <input type="text" id="search" placeholder="Search by name..." onkeyup="searchStaff()">
-        <button onclick="location.href='addstaff.html'">+  Add Staff</button>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Project</th>
-                <th>Shift</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="staffTableBody"></tbody>
-    </table>
-
-</div>
-
-
-<!-- MODAL -->
-<div id="staffModal" class="modal">
-    <div class="modal-content">
-
-        <span class="close" onclick="closeModal()">&times;</span>
-
-        <h3>Staff Details</h3>
-
-        <div class="profile-section">
-            <img id="modalPhoto" src="" alt="Profile">
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="control-panel">
+            <h1>👥 ISSNE Staff Management</h1>
+            <p>Industrial Staff Sync Network Environment</p>
         </div>
 
-        <table class="details-table">
-            <tr><td>Name</td><td id="modalName"></td></tr>
-            <tr><td>Contact</td><td id="modalContact"></td></tr>
-            <tr><td>Age</td><td id="modalAge"></td></tr>
-            <tr><td>DOB</td><td id="modalDOB"></td></tr>
-            <tr><td>DOJ</td><td id="modalDOJ"></td></tr>
-            <tr><td>Project</td><td id="modalProject"></td></tr>
-            <tr><td>Shift</td><td id="modalShift"></td></tr>
-            <tr><td>Health</td><td id="modalHealth"></td></tr>
-            <tr><td>Salary</td><td id="modalSalary"></td></tr>
-        </table>
+        <!-- Search and Add -->
+        <div class="quick-actions">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                <input type="text" id="search" placeholder="🔍 Search by Name / Project..." onkeyup="searchStaff()" style="flex: 1; min-width: 200px; padding: 12px 20px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
+                <button onclick="location.href='addstaff.html'" class="glow-btn">➕ Add Staff</button>
+            </div>
+        </div>
 
+        <!-- Staff Grid -->
+        <div class="recent-staff-grid" id="staffGrid">
+            <!-- JS will populate cards here -->
+        </div>
+
+        <!-- Staff Detail Modal -->
+        <div id="staffModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);">
+            <div style="background: rgba(30,30,60,0.95); margin: 5% auto; padding: 30px; border-radius: 25px; max-width: 600px; border: 1px solid rgba(255,255,255,0.2); position: relative;">
+                <span onclick="closeModal()" style="position: absolute; right: 20px; font-size: 30px; color: white; cursor: pointer;">&times;</span>
+                
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img id="modalPhoto" src="" alt="Profile" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; background: linear-gradient(135deg, #4ecdc4, #45b7d1);">
+                    <h2 id="modalName" style="color: white; margin-top: 15px;"></h2>
+                </div>
+                
+                <div class="stats-grid" style="grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
+                    <div class="stat-card" style="padding: 15px;">
+                        <label style="color: rgba(255,255,255,0.7); font-size: 0.8em;">Project</label>
+                        <div id="modalProject" style="color: white; font-weight: 600;"></div>
+                    </div>
+                    <div class="stat-card" style="padding: 15px;">
+                        <label style="color: rgba(255,255,255,0.7); font-size: 0.8em;">Shift</label>
+                        <div id="modalShift" style="color: white; font-weight: 600;"></div>
+                    </div>
+                    <div class="stat-card" style="padding: 15px;">
+                        <label style="color: rgba(255,255,255,0.7); font-size: 0.8em;">Salary</label>
+                        <div id="modalSalary" style="color: #4ecdc4; font-weight: 600;"></div>
+                    </div>
+                    <div class="stat-card" style="padding: 15px;">
+                        <label style="color: rgba(255,255,255,0.7); font-size: 0.8em;">Experience</label>
+                        <div id="modalExperience" style="color: white; font-weight: 600;"></div>
+                    </div>
+                </div>
+                
+                <div style="background: rgba(255,255,255,0.1); border-radius: 15px; padding: 20px; margin-bottom: 20px;">
+                    <div style="color: rgba(255,255,255,0.8); margin-bottom: 10px;"><strong>📱 Contact:</strong> <span id="modalContact"></span></div>
+                    <div style="color: rgba(255,255,255,0.8); margin-bottom: 10px;"><strong>♂️ Gender:</strong> <span id="modalGender"></span> | <strong>Age:</strong> <span id="modalAge"></span></div>
+                    <div style="color: rgba(255,255,255,0.8); margin-bottom: 10px;"><strong>🩸 Blood:</strong> <span id="modalBlood"></span> | <strong>DOB:</strong> <span id="modalDOB"></span></div>
+                    <div style="color: rgba(255,255,255,0.8); margin-bottom: 10px;"><strong>📅 DOJ:</strong> <span id="modalDOJ"></span> | <strong>❤️ Health:</strong> <span id="modalHealth"></span></div>
+                    <div style="color: rgba(255,255,255,0.8);"><strong>⚠️ Allergies:</strong> <span id="modalAllergies"></span></div>
+                </div>
+                
+                <div style="display: flex; gap: 15px; justify-content: center;">
+                    <button onclick="editStaff(currentIndex)" class="glow-btn">✏️ Edit</button>
+                    <button onclick="deleteStaff(currentIndex)" class="glow-btn" style="background: linear-gradient(45deg, #ff6b6b, #d63031);">🗑️ Delete</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-<script src="/JS/staff.js"></script>
-
+    <script src="/JS/datasync.js"></script>
+    <script src="/JS/staff.js"></script>
 </body>
 </html>

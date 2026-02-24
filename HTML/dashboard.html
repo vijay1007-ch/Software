@@ -1,52 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>ISSNE - Dashboard</title>
+    <title>ISSNE Dashboard</title>
     <link rel="stylesheet" href="/CSS/dashboard.css">
 </head>
 <body>
+    <!-- NAVBAR -->
+    <nav class="comet-navbar">
+        <div class="nav-brand">
+            <h2>🚀 ISSNE</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/HTML/dashboard.html" class="active">📊 Dashboard</a></li>
+            <li><a href="/HTML/addstaff.html">➕ Add Staff</a></li>
+            <li><a href="/HTML/attendance.html">📋 Attendance</a></li>
+            <li><a href="/HTML/salary.html">💰 Salary</a></li>
+            <li><a href="/HTML/staff.html">👥 Staff</a></li>
+            <li><a href="/HTML/projects.html">📋 Projects</a></li>
+            <li><a href="/HTML/machinedetails.html">⚙️ Machines</a></li>
+            <li><a href="/HTML/settings.html">⚙️ Settings</a></li>
+        </ul>
+    </nav>
 
-<div class="sidebar">
-    <h2>ISSNE</h2>
-
-    <div class="top-links">
-        <a href="homepage.html">Home</a>
-        <a href="addstaff.html">Add Staff</a>
-        <a href="attendance.html">Attendance</a>
-        <a href="salary.html">Salary Report</a>
-        <a href="projects.html">Projects</a>
-        <a href="machinedetails.html">Machine details</a>
-        <a href="staff.html">Staff details</a>
-    </div>
-    <div class="bottom-links">
-        <a href="contact.html">Contact Me</a>
-        <a href="settings.html">Settings</a>
-        <a href="loginpage.htm">Logout</a>
-    </div>
-</div>
-
-
-
-<div class="main-content">
-    <h1>Admin Dashboard</h1>
-
-    <div class="cards">
-        <div class="card">
-            <h3>Total Staff</h3>
-            <p>20</p>
-        </div>  
-
-        <div class="card">
-            <h3>Tech Staff</h3>
-            <p>10</p>
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="control-panel">
+            <h1>🎛️ ISSNE Dashboard</h1>
+            <p>Industrial Staff Sync Network Environment</p>
         </div>
 
-        <div class="card">
-            <h3>Non-Tech staff</h3>
-            <p>10</p>
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-icon">👥</span>
+                <div class="stat-number" id="totalStaff">0</div>
+                <div class="stat-label">Total Staff</div>
+                <div class="stat-action">
+                    <a href="staff.html">View All →</a>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📋</span>
+                <div class="stat-number" id="totalProjects">0</div>
+                <div class="stat-label">Projects</div>
+                <div class="stat-action">
+                    <a href="projects.html">View All →</a>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">⚙️</span>
+                <div class="stat-number" id="totalMachines">0</div>
+                <div class="stat-label">Machines</div>
+                <div class="stat-action">
+                    <a href="machinedetails.html">View All →</a>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">✅</span>
+                <div class="stat-number" id="presentToday">0</div>
+                <div class="stat-label">Present Today</div>
+                <div class="stat-action">
+                    <a href="attendance.html">View →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h2>⚡ Quick Actions</h2>
+            <div class="action-grid">
+                <div class="action-card" onclick="location.href='addstaff.html'">
+                    <span class="action-icon">➕</span>
+                    <span>Add Staff</span>
+                </div>
+                <div class="action-card" onclick="location.href='attendance.html'">
+                    <span class="action-icon">📋</span>
+                    <span>Mark Attendance</span>
+                </div>
+                <div class="action-card" onclick="location.href='salary.html'">
+                    <span class="action-icon">💰</span>
+                    <span>Calculate Salary</span>
+                </div>
+                <div class="action-card" onclick="location.href='projects.html'">
+                    <span class="action-icon">📋</span>
+                    <span>Add Project</span>
+                </div>
+                <div class="action-card" onclick="location.href='machinedetails.html'">
+                    <span class="action-icon">⚙️</span>
+                    <span>Add Machine</span>
+                </div>
+                <div class="action-card" onclick="location.href='settings.html'">
+                    <span class="action-icon">⚙️</span>
+                    <span>Settings</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Staff -->
+        <div class="recent-activity">
+            <h2>👥 Recent Staff</h2>
+            <div class="recent-staff-grid" id="recentStaffGrid">
+                <!-- JS populates -->
+            </div>
+        </div>
+
+        <!-- Sync Status -->
+        <div class="sync-status">
+            <div class="sync-card">
+                <h3>🔄 Data Sync Status</h3>
+                <div class="sync-info">
+                    <div class="sync-item">
+                        <span class="sync-label">Staff Data:</span>
+                        <span class="sync-value status-ok">✓ Synced</span>
+                    </div>
+                    <div class="sync-item">
+                        <span class="sync-label">Last Updated:</span>
+                        <span class="sync-value" id="lastUpdated">Just now</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
+    <script src="/JS/datasync.js"></script>
+    <script src="/JS/dashboard.js"></script>
 </body>
 </html>

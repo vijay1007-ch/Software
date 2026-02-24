@@ -1,4 +1,9 @@
+/**
+ * ISSNE - Add Staff Module
+ */
+
 document.addEventListener("DOMContentLoaded", function () {
+    console.log("✅ Add Staff JS Loaded");
 
     const form = document.getElementById("staffForm");
     const dob = document.getElementById("dob");
@@ -6,81 +11,97 @@ document.addEventListener("DOMContentLoaded", function () {
     const age = document.getElementById("age");
     const exp = document.getElementById("experience");
 
-    dob.addEventListener("change", function () {
+    // Check if editing
+    const urlParams = new URLSearchParams(window.location.search);
+    const editId = urlParams.get('edit');
+    
+    if (editId) {
+        loadStaffForEdit(editId);
+    }
 
-        const birth = new Date(this.value);
-        const now = new Date();
+    // Age Calculation
+    if (dob) {
+        dob.addEventListener("change", function () {
+            const birth = new Date(this.value);
+            const today = new Date();
 
-        let calculatedAge = now.getFullYear() - birth.getFullYear();
-        const m = now.getMonth() - birth.getMonth();
+            let calculatedAge = today.getFullYear() - birth.getFullYear();
+            if (
+                today.getMonth() < birth.getMonth() ||
+                (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate())
+            ) {
+                calculatedAge--;
+            }
 
-        if (m < 0 || (m === 0 && now.getDate() < birth.getDate())) {
-            calculatedAge--;
-        }
+            if (age) age.value = calculatedAge;
+        });
+    }
 
-        if (calculatedAge < 18 || calculatedAge > 55) {
-            alert("Age must be between 18 and 55");
-            age.value = "";
-            return;
-        }
+    // Experience Calculation
+    if (doj) {
+        doj.addEventListener("change", function () {
+            const join = new Date(this.value);
+            const today = new Date();
 
-        age.value = calculatedAge;
-    });
+            let years = today.getFullYear() - join.getFullYear();
+            if (years < 0) years = 0;
 
-    doj.addEventListener("change", function () {
+            if (exp) exp.value = years + " Years";
+        });
+    }
 
-        const join = new Date(this.value);
-        const now = new Date();
-
-        let years = now.getFullYear() - join.getFullYear();
-        exp.value = years + " Years";
-    });
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const reader = new FileReader();
-        const photoInput = document.getElementById("photo");
-
-        if (photoInput.files.length > 0) {
-            reader.onload = function (event) {
-                saveData(event.target.result);
-            };
-            reader.readAsDataURL(photoInput.files[0]);
-        } else {
-            saveData("");
-        }
-
-        function saveData(photo) {
-
-            let staffList = JSON.parse(localStorage.getItem("staffData")) || [];
+    // Form Submit
+    if (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
 
             const staff = {
-                name: name.value,
-                contact: contact.value,
-                age: age.value,
-                dob: dob.value,
-                doj: doj.value,
-                experience: exp.value,
-                project: project.value,
-                shift: shift.value,
-                health: health.value,
-                salary: salary.value,
-                photo: photo
+                id: editId ? parseInt(editId) : Date.now(),
+                name: document.getElementById("name").value,
+                contact: document.getElementById("contact").value,
+                gender: document.getElementById("gender").value,
+                blood: document.getElementById("blood").value,
+                age: age?.value || '',
+                dob: dob?.value || '',
+                doj: doj?.value || '',
+                experience: exp?.value || '',
+                project: document.getElementById("project").value,
+                shift: document.getElementById("shift").value,
+                health: document.getElementById("health").value,
+                medical: document.getElementById("medical").value,
+                allergies: document.getElementById("allergies").value,
+                salary: document.getElementById("salary").value
             };
 
-            staffList.push(staff);
+            if (editId) {
+                DataSync.updateStaff(staff);
+                alert("✅ Staff updated successfully!");
+            } else {
+                DataSync.addStaff(staff);
+                alert("✅ Staff added successfully!");
+            }
 
-            localStorage.setItem("staffData", JSON.stringify(staffList));
-
-            alert("Staff Added Successfully");
             window.location.href = "staff.html";
-        }
-
-    });
-
+        });
+    }
 });
 
-function goStaff() {
-    window.location.href = "staff.html";
+function loadStaffForEdit(editId) {
+    const staff = DataSync.getStaff().find(s => s.id == editId);
+    if (!staff) return;
+
+    document.getElementById("name").value = staff.name || '';
+    document.getElementById("contact").value = staff.contact || '';
+    document.getElementById("gender").value = staff.gender || '';
+    document.getElementById("blood").value = staff.blood || '';
+    document.getElementById("dob").value = staff.dob || '';
+    document.getElementById("doj").value = staff.doj || '';
+    document.getElementById("project").value = staff.project || '';
+    document.getElementById("shift").value = staff.shift || '';
+    document.getElementById("health").value = staff.health || '';
+    document.getElementById("medical").value = staff.medical || '';
+    document.getElementById("allergies").value = staff.allergies || '';
+    document.getElementById("salary").value = staff.salary || '';
+    document.getElementById("age").value = staff.age || '';
+    document.getElementById("experience").value = staff.experience || '';
 }

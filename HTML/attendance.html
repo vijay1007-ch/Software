@@ -2,46 +2,97 @@
 <html>
 <head>
     <title>Attendance - ISSNE</title>
-    <link rel="stylesheet" href="../CSS/attendance.css">
+    <link rel="stylesheet" href="/CSS/dashboard.css">
 </head>
-
 <body>
+    <!-- NAVBAR -->
+    <nav class="comet-navbar">
+        <div class="nav-brand">
+            <h2>🚀 ISSNE</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/HTML/dashboard.html">📊 Dashboard</a></li>
+            <li><a href="/HTML/addstaff.html">➕ Add Staff</a></li>
+            <li><a href="/HTML/attendance.html" class="active">📋 Attendance</a></li>
+            <li><a href="/HTML/salary.html">💰 Salary</a></li>
+            <li><a href="/HTML/staff.html">👥 Staff</a></li>
+            <li><a href="/HTML/projects.html">📋 Projects</a></li>
+            <li><a href="/HTML/machinedetails.html">⚙️ Machines</a></li>
+            <li><a href="/HTML/settings.html">⚙️ Settings</a></li>
+        </ul>
+    </nav>
 
-<div class="container">
-    <h2>Attendance Management</h2>
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="control-panel">
+            <h1>📋 ISSNE Attendance System</h1>
+            <p>Clock In/Out & Track Employee Presence</p>
+        </div>
 
-    <form id="attendanceForm">
+        <!-- Clock In/Out Section -->
+        <div class="quick-actions">
+            <h2>🕐 Mark Your Attendance</h2>
+            <div style="text-align: center; margin: 20px 0;">
+                <div style="font-size: 3em; color: #4ecdc4; font-weight: bold;" id="currentTime">--:--:--</div>
+                <div style="color: rgba(255,255,255,0.7);" id="currentDate">--</div>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <select id="attendanceStaffSelect" style="width: 100%; max-width: 400px; padding: 12px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
+                    <option value="">-- Select Staff --</option>
+                </select>
+            </div>
 
-        <select id="staffSelect" required>
-            <option value="">Select Staff</option>
-        </select>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <button id="clockInBtn" onclick="clockIn()" class="glow-btn">▶️ CLOCK IN</button>
+                <button id="clockOutBtn" onclick="clockOut()" class="glow-btn" style="background: linear-gradient(45deg, #ff6b6b, #d63031);" disabled>⏹️ CLOCK OUT</button>
+            </div>
 
-        <input type="date" id="date" required>
+            <div id="statusMessage" style="margin-top: 20px; text-align: center;"></div>
+        </div>
 
-        <input type="time" id="loginTime" required>
-        <input type="time" id="logoutTime" required>
+        <!-- Today's Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-icon">✅</span>
+                <div class="stat-number" id="presentCount">0</div>
+                <div class="stat-label">Present</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">❌</span>
+                <div class="stat-number" id="absentCount">0</div>
+                <div class="stat-label">Absent</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">👥</span>
+                <div class="stat-number" id="totalStaffCount">0</div>
+                <div class="stat-label">Total Staff</div>
+            </div>
+        </div>
 
-        <button type="submit">Submit Attendance</button>
-    </form>
+        <!-- Today's Attendance -->
+        <div class="recent-activity">
+            <h2>📅 Today's Attendance</h2>
+            <div class="recent-staff-grid" id="todayAttendanceTable">
+                <!-- JS populates -->
+            </div>
+        </div>
 
-    <h3>Attendance Records</h3>
+        <!-- Admin: Secure Delete -->
+        <div class="sync-card">
+            <h3>🛡️ Secure Delete Staff</h3>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 15px;">⚠️ Warning: Deletes staff + ALL attendance & salary data!</p>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                <select id="deleteStaffSelect" style="flex: 1; min-width: 200px; padding: 12px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
+                    <option value="">Select Staff to Delete</option>
+                </select>
+                <input type="password" id="adminKey" placeholder="Admin Key" maxlength="8" style="padding: 12px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
+                <button onclick="deleteStaffSecure()" style="background: #ff6b6b; color: white; border: none; padding: 12px 24px; border-radius: 25px; cursor: pointer;">🗑️ DELETE</button>
+            </div>
+        </div>
+    </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Hours Worked</th>
-            </tr>
-        </thead>
-        <tbody id="attendanceTable"></tbody>
-    </table>
-
-    <br>
-    <a href="dashboard.html">← Back to Dashboard</a>
-</div>
-
-<script src="../JS/attendance.js"></script>
-
+    <script src="/JS/datasync.js"></script>
+    <script src="/JS/attendance.js"></script>
 </body>
 </html>

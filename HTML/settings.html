@@ -1,7 +1,107 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <p>
-            hi rah pukka
-        </p>
-    </body>
+<head>
+    <title>Settings - ISSNE</title>
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="comet-navbar">
+        <div class="nav-brand">
+            <h2>🚀 ISSNE</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/HTML/dashboard.html">📊 Dashboard</a></li>
+            <li><a href="/HTML/addstaff.html">➕ Add Staff</a></li>
+            <li><a href="/HTML/attendance.html">📋 Attendance</a></li>
+            <li><a href="/HTML/salary.html">💰 Salary</a></li>
+            <li><a href="/HTML/staff.html">👥 Staff</a></li>
+            <li><a href="/HTML/projects.html">📋 Projects</a></li>
+            <li><a href="/HTML/machinedetails.html">⚙️ Machines</a></li>
+            <li><a href="/HTML/settings.html" class="active">⚙️ Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="control-panel">
+            <h1>⚙️ ISSNE Settings</h1>
+            <p>Configure System Preferences</p>
+        </div>
+
+        <!-- General Settings -->
+        <div class="quick-actions">
+            <h2>🔧 General Settings</h2>
+            <form id="settingsForm" style="margin-top: 20px;">
+                <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🏢 Company Name</label>
+                        <input type="text" id="companyName" value="ISSNE" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🔑 Admin Key</label>
+                        <input type="password" id="adminKey" value="admin123" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">💵 Hourly Rate (₹)</label>
+                        <input type="number" id="hourlyRate" value="250" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                </div>
+                <div style="margin-top: 20px; text-align: center;">
+                    <button type="submit" class="glow-btn">💾 Save Settings</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Data Management -->
+        <div class="recent-activity">
+            <h2>💾 Data Management</h2>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+                <button onclick="exportData()" class="glow-btn">📤 Export Data</button>
+                <button onclick="importData()" class="glow-btn">📥 Import Data</button>
+                <button onclick="clearData()" class="glow-btn" style="background: linear-gradient(45deg, #ff6b6b, #d63031);">🗑️ Clear All Data</button>
+            </div>
+        </div>
+
+        <!-- Logout -->
+        <div class="sync-card">
+            <h3>🚪 Logout</h3>
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="logout()" class="glow-btn" style="background: linear-gradient(45deg, #ff6b6b, #d63031);">🚪 Logout</button>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="sync-card">
+            <h3>ℹ️ About ISSNE</h3>
+            <div class="sync-info" style="justify-content: center;">
+                <div class="sync-item">
+                    <span class="sync-label">System:</span>
+                    <span class="sync-value">Industrial Staff Sync Network Environment</span>
+                </div>
+                <div class="sync-item">
+                    <span class="sync-label">Version:</span>
+                    <span class="sync-value">1.0.0</span>
+                </div>
+                <div class="sync-item">
+                    <span class="sync-label">Project:</span>
+                    <span class="sync-value">KLH ECE Mini Project</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="file" id="importFile" accept=".json" style="display: none;">
+
+    <script src="/JS/datasync.js"></script>
+    <script src="/JS/settings.js"></script>
+    <script>
+        function logout() {
+            if (confirm("Are you sure you want to logout?")) {
+                localStorage.removeItem('currentUser');
+                window.location.href = '/HTML/loginpage.htm';
+            }
+        }
+    </script>
+</body>
 </html>

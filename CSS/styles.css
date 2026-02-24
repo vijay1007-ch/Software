@@ -78,3 +78,15 @@ body {
 .view-btn:hover {
     background: linear-gradient(90deg, #15803d, #16a34a);
 }
+
+/* Universal Modal Fix */
+.comet-modal-content table,
+.comet-modal-content .details-grid {
+    margin: 20px 0 !important;
+    line-height: 1.8;
+}
+
+.detail-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}

@@ -1,7 +1,125 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <p>
-            hi rah pukka
-        </p>
-    </body>
+<head>
+    <title>Machine Details - ISSNE</title>
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="comet-navbar">
+        <div class="nav-brand">
+            <h2>🚀 ISSNE</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/HTML/dashboard.html">📊 Dashboard</a></li>
+            <li><a href="/HTML/addstaff.html">➕ Add Staff</a></li>
+            <li><a href="/HTML/attendance.html">📋 Attendance</a></li>
+            <li><a href="/HTML/salary.html">💰 Salary</a></li>
+            <li><a href="/HTML/staff.html">👥 Staff</a></li>
+            <li><a href="/HTML/projects.html">📋 Projects</a></li>
+            <li><a href="/HTML/machinedetails.html" class="active">⚙️ Machines</a></li>
+            <li><a href="/HTML/settings.html">⚙️ Settings</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="control-panel">
+            <h1>⚙️ ISSNE Machine Management</h1>
+            <p>Track & Manage Industrial Machines</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-icon">⚙️</span>
+                <div class="stat-number" id="totalMachines">0</div>
+                <div class="stat-label">Total Machines</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">✅</span>
+                <div class="stat-number" id="activeMachines">0</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🔧</span>
+                <div class="stat-number" id="maintenanceMachines">0</div>
+                <div class="stat-label">Maintenance</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">💰</span>
+                <div class="stat-number" id="totalValue">₹0</div>
+                <div class="stat-label">Total Value</div>
+            </div>
+        </div>
+
+        <!-- Add New Machine -->
+        <div class="quick-actions">
+            <h2>➕ Add New Machine</h2>
+            <form id="machineForm" style="margin-top: 20px;">
+                <div class="stats-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🔧 Machine Name *</label>
+                        <input type="text" id="machineName" required style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🏷️ Machine ID</label>
+                        <input type="text" id="machineId" placeholder="MCH-001" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🏭 Manufacturer</label>
+                        <input type="text" id="machineManufacturer" placeholder="Manufacturer" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">🔧 Machine Type</label>
+                        <select id="machineType" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                            <option value="CNC">CNC Machine</option>
+                            <option value="Lathe">Lathe Machine</option>
+                            <option value="Drill">Drill Machine</option>
+                            <option value="Press">Hydraulic Press</option>
+                            <option value="Conveyor">Conveyor Belt</option>
+                            <option value="Welding">Welding Machine</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">💰 Cost (₹)</label>
+                        <input type="number" id="machineCost" placeholder="0" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">📍 Location</label>
+                        <input type="text" id="machineLocation" placeholder="Factory Floor A" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                    </div>
+                    <div class="stat-card" style="text-align: left;">
+                        <label style="color: rgba(255,255,255,0.8); font-size: 0.9em;">📊 Status</label>
+                        <select id="machineStatus" style="width: 100%; padding: 10px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white; margin-top: 5px;">
+                            <option value="Active">Active</option>
+                            <option value="Maintenance">Under Maintenance</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="Broken">Broken</option>
+                        </select>
+                    </div>
+                </div>
+                <div style="margin-top: 20px; text-align: center;">
+                    <button type="submit" class="glow-btn">➕ Add Machine</button>
+                    <button type="button" onclick="clearMachineForm()" class="glow-btn" style="background: rgba(255,255,255,0.2);">Clear</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Machines List -->
+        <div class="recent-activity">
+            <h2>🏭 Factory Machines</h2>
+            <div style="margin-bottom: 20px;">
+                <input type="text" id="machineSearch" placeholder="🔍 Search machines..." onkeyup="filterMachines()" style="width: 100%; padding: 12px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
+            </div>
+            <div class="recent-staff-grid" id="machinesGrid">
+                <!-- JS populates -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/datasync.js"></script>
+    <script src="/JS/machinedetails.js"></script>
+</body>
 </html>
