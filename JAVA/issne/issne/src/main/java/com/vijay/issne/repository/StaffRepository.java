@@ -1,4 +1,7 @@
 package com.vijay.issne.repository;
 
-public class StaffRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.vijay.issne.entity.Staff;
+
+public interface StaffRepository extends JpaRepository<Staff, Long> {
 }

@@ -1,10 +1,5 @@
-/**
- * ISSNE - Industrial Staff Sync Management System
- * Data Sync Manager - Centralized data management
- */
 
 const DataSync = {
-    // Storage keys
     KEYS: {
         STAFF: 'staffData',
         ATTENDANCE: 'attendanceData',
@@ -15,13 +10,11 @@ const DataSync = {
         LOGIN: 'currentUser'
     },
 
-    // Initialize default data
     init() {
         console.log("🔄 ISSNE Data Sync Initialized");
         this.ensureDataExists();
     },
 
-    // Ensure all data arrays exist
     ensureDataExists() {
         if (!localStorage.getItem(this.KEYS.STAFF)) {
             localStorage.setItem(this.KEYS.STAFF, JSON.stringify([]));
