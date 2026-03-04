@@ -1,10 +1,10 @@
-package com.vijay.issne;
+package com.proiss.backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IssneApplicationTests {
+class BackendApplicationTests {
 
 	@Test
 	void contextLoads() {

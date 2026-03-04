@@ -1,7 +1,8 @@
-package com.vijay.issne.repository;
+package com.proiss.backend;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.vijay.issne.entity.Staff;
 
 public interface StaffRepository extends JpaRepository<Staff, Long> {
+
 }
+
