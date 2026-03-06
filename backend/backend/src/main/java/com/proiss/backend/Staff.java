@@ -18,21 +18,21 @@ public class Staff {
     private String gender;
     private String blood;
     private Integer age;
-    private String dob;          // you can also use LocalDate
-    private String doj;          // or use LocalDate
-    private String experience;   // you can compute this from doj
+    private String dob;         
+    private String doj;         
+    private String experience;  
     private String project;
     private String shift;
     private String health;
     private String medical;
     private String allergies;
-    private Double salary;       // salary in ₹
+    private Double salary;      
 
-    // Default constructor
+    
     public Staff() {
     }
 
-    // Getters and setters
+    
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

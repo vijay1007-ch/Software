@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/CSS/dashboard.css">
 </head>
 <body>
-    <!-- NAVBAR -->
+ 
     <nav class="comet-navbar">
         <div class="nav-brand">
             <h2> ISSNE</h2>
@@ -23,13 +23,13 @@
     </nav>
 
     <div class="container">
-        <!-- Hero Header -->
+   
         <div class="control-panel">
             <h1>⚙️ ISSNE Machine Management</h1>
             <p>Track & Manage Industrial Machines</p>
         </div>
 
-        <!-- Stats Cards -->
+  
         <div class="stats-grid">
             <div class="stat-card">
                 <span class="stat-icon">⚙️</span>
@@ -53,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Add New Machine -->
         <div class="quick-actions">
             <h2>➕ Add New Machine</h2>
             <form id="machineForm" style="margin-top: 20px;">
@@ -107,14 +106,12 @@
             </form>
         </div>
 
-        <!-- Machines List -->
         <div class="recent-activity">
             <h2>🏭 Factory Machines</h2>
             <div style="margin-bottom: 20px;">
                 <input type="text" id="machineSearch" placeholder="🔍 Search machines..." onkeyup="filterMachines()" style="width: 100%; padding: 12px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: white;">
             </div>
             <div class="recent-staff-grid" id="machinesGrid">
-                <!-- JS populates -->
             </div>
         </div>
     </div>

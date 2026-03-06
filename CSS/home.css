@@ -1,11 +1,9 @@
-/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Layout */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #00b09b, #96c93d);
@@ -14,8 +12,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-
-/* Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -29,9 +25,8 @@ body {
     font-weight: bold;
 }
 
-/* Hero Section */
 .hero {
-    flex: 1; /* THIS REMOVES EXTRA SPACE */
+    flex: 1; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,7 +46,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Button */
 .btn {
     padding: 12px 25px;
     background: white;
@@ -67,7 +61,6 @@ body {
     color: white;
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 15px;
@@ -88,7 +81,6 @@ footer {
     background: linear-gradient(90deg, #15803d, #16a34a);
 }
 
-/* ISSNE Landing - Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;

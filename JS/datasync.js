@@ -108,7 +108,7 @@ const DataSync = {
     },
 
     deleteStaff(id) {
-        // Also delete related attendance and salary records
+
         this.deleteItem(this.KEYS.STAFF, id);
         
         const attendance = this.getData(this.KEYS.ATTENDANCE);
@@ -124,17 +124,15 @@ const DataSync = {
         localStorage.setItem(key, JSON.stringify(data));
     },
 
-    // Attendance specific methods
+
     getAttendance() {
         return this.getData(this.KEYS.ATTENDANCE);
     },
 
-    // Salary specific methods
     getSalaryRecords() {
         return this.getData(this.KEYS.SALARY);
     },
 
-    // Projects specific methods
     getProjects() {
         return this.getData(this.KEYS.PROJECTS);
     },
@@ -154,7 +152,6 @@ const DataSync = {
         this.deleteItem(this.KEYS.PROJECTS, id);
     },
 
-    // Machines specific methods
     getMachines() {
         return this.getData(this.KEYS.MACHINES);
     },
@@ -174,7 +171,6 @@ const DataSync = {
         this.deleteItem(this.KEYS.MACHINES, id);
     },
 
-    // Settings
     getSettings() {
         return this.getData(this.KEYS.SETTINGS);
     },
@@ -188,7 +184,6 @@ const DataSync = {
         this.setData(this.KEYS.SETTINGS, { ...settings, ...updates });
     },
 
-    // Statistics
     getStats() {
         const staff = this.getData(this.KEYS.STAFF);
         const attendance = this.getData(this.KEYS.ATTENDANCE);
@@ -199,10 +194,8 @@ const DataSync = {
         const today = new Date().toISOString().split('T')[0];
         const todayAttendance = attendance.filter(a => a.date === today && a.clockIn);
 
-        // Calculate total salary
         const totalSalary = salary.reduce((sum, s) => sum + (s.salary || 0), 0);
 
-        // Calculate average attendance
         const totalDays = attendance.length;
         const presentDays = attendance.filter(a => a.status === 'Present').length;
         const attendanceRate = totalDays > 0 ? Math.round((presentDays / totalDays) * 100) : 0;
@@ -218,7 +211,6 @@ const DataSync = {
         };
     },
 
-    // Event listeners for data changes
     listeners: {},
 
     on(key, callback) {
@@ -232,13 +224,13 @@ const DataSync = {
         if (this.listeners[key]) {
             this.listeners[key].forEach(callback => callback(this.getData(key)));
         }
-        // Notify global listeners
+ 
         if (this.listeners['*']) {
             this.listeners['*'].forEach(callback => callback(key, this.getData(key)));
         }
     },
 
-    // Clear all data (for testing/reset)
+
     clearAll() {
         Object.values(this.KEYS).forEach(key => {
             localStorage.removeItem(key);
@@ -248,7 +240,6 @@ const DataSync = {
     }
 };
 
-// Auto-initialize when loaded
 document.addEventListener('DOMContentLoaded', () => {
     DataSync.init();
 });

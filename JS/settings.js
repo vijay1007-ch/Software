@@ -1,13 +1,10 @@
-/**
- * ISSNE - Settings Module
- */
+
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Settings JS Loaded");
     loadSettings();
 });
 
-// Load Settings
 function loadSettings() {
     const settings = DataSync.getSettings();
     if (settings) {
@@ -17,7 +14,6 @@ function loadSettings() {
     }
 }
 
-// Save Settings
 const settingsForm = document.getElementById("settingsForm");
 if (settingsForm) {
     settingsForm.addEventListener("submit", function(e) {
@@ -34,7 +30,6 @@ if (settingsForm) {
     });
 }
 
-// Export Data
 function exportData() {
     const data = {
         staff: DataSync.getStaff(),
@@ -56,7 +51,6 @@ function exportData() {
     alert("✅ Data exported successfully!");
 }
 
-// Import Data
 function importData() {
     document.getElementById("importFile").click();
 }
@@ -89,7 +83,6 @@ if (importFile) {
     });
 }
 
-// Clear All Data
 function clearData() {
     if (confirm("⚠️ Are you sure you want to delete ALL data? This cannot be undone!")) {
         const key = prompt("Type 'DELETE' to confirm:");
@@ -102,8 +95,6 @@ function clearData() {
         }
     }
 }
-
-// Make functions global
 window.exportData = exportData;
 window.importData = importData;
 window.clearData = clearData;

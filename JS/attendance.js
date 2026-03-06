@@ -1,28 +1,24 @@
-/**
- * ISSNE - Attendance Module
- */
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Attendance JS Loaded");
     
-    // Initialize DataSync
+  
     DataSync.init();
-    
-    // Update time
+
     updateTime();
     setInterval(updateTime, 1000);
     
-    // Load staff dropdown
+
     loadStaffDropdown();
     
-    // Load today's attendance
+
     displayTodayAttendance();
     
-    // Update stats
+
     updateStats();
 });
 
-// Update current time
+
 function updateTime() {
     const now = new Date();
     const timeEl = document.getElementById("currentTime");
@@ -36,8 +32,7 @@ function loadStaffDropdown() {
     const staff = DataSync.getStaff();
     const select = document.getElementById("attendanceStaffSelect");
     const deleteSelect = document.getElementById("deleteStaffSelect");
-    
-    // Clear existing options (except first)
+
     if (select) {
         select.innerHTML = '<option value="">-- Select Staff --</option>';
         staff.forEach(s => {
@@ -74,15 +69,13 @@ function clockIn() {
     const time = new Date().toLocaleTimeString();
     
     let attendance = DataSync.getAttendance();
-    
-    // Check if already clocked in
+   
     const existing = attendance.find(a => a.staffId == staffId && a.date === today && a.clockIn);
     if (existing) {
         alert("You have already clocked in today!");
         return;
     }
     
-    // Add new attendance record
     attendance.push({
         id: Date.now(),
         staffId: staffId,
@@ -117,7 +110,6 @@ function clockOut() {
     
     let attendance = DataSync.getAttendance();
     
-    // Find today's record
     const record = attendance.find(a => a.staffId == staffId && a.date === today && a.clockIn && !a.clockOut);
     
     if (!record) {
@@ -203,10 +195,8 @@ function deleteStaffSecure() {
     if (confirm("⚠️ This will permanently delete the staff and ALL their data. Continue?")) {
         DataSync.deleteStaff(staffId);
         
-        // Reload dropdowns
         loadStaffDropdown();
         
-        // Reload attendance
         displayTodayAttendance();
         updateStats();
         
@@ -214,7 +204,6 @@ function deleteStaffSecure() {
     }
 }
 
-// Global functions
 window.clockIn = clockIn;
 window.clockOut = clockOut;
 window.deleteStaffSecure = deleteStaffSecure;

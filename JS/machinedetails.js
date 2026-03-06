@@ -1,6 +1,4 @@
-/**
- * ISSNE - Machine Details Module
- */
+
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Machine Details JS Loaded");
@@ -8,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateStats();
 });
 
-// Machine Form
 const machineForm = document.getElementById("machineForm");
 if (machineForm) {
     machineForm.addEventListener("submit", function(e) {
@@ -122,7 +119,6 @@ function updateStats() {
     document.getElementById("totalValue").textContent = '₹' + totalValue.toLocaleString();
 }
 
-// Make functions global
 window.clearMachineForm = clearMachineForm;
 window.deleteMachine = deleteMachine;
 window.filterMachines = filterMachines;

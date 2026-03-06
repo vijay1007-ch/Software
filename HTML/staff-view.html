@@ -8,22 +8,17 @@
 </head>
 <body>
     <div class="staff-page">
-        <!-- ISSNE Top Logo -->
-        <div class="issne-logo">
+         <div class="issne-logo">
             <h1>ISSNE</h1>
         </div>
 
         <div class="staff-card-container">
-            <!-- Staff Header -->
             <div class="staff-header">
                 <button class="logout-btn-staff glow-btn danger" onclick="logout()">🚪 Logout</button>
                 <h2 id="staffNameHeader">Loading...</h2>
                 <p class="staff-id" id="staffIdDisplay">-</p>
             </div>
-
-            <!-- Stats Grid (6 Cards) -->
-            <div class="stats-grid-perfect">
-                <!-- Your 6 cards remain exactly same -->
+]          <div class="stats-grid-perfect">
                 <div class="stat-card-perfect">
                     <span class="stat-icon-perfect">⏱️</span>
                     <div class="stat-number-perfect" id="hoursWorked">0h</div>
@@ -62,18 +57,16 @@
                 </div>
             </div>
 
-            <!-- NEW REQUEST BUTTONS + Requests Section -->
             <div class="requests-section">
-                <!-- NEW: Request Buttons -->
+         
                 <div class="request-buttons">
                     <button class="glow-btn primary" onclick="openLeaveRequest()">🍃 Request Leave</button>
                     <button class="glow-btn export" onclick="openSalaryAdvance()">💸 Salary Advance</button>
                 </div>
 
-                <!-- Requests Header -->
                 <h3>📋 My Requests</h3>
                 
-                <!-- Requests Grid -->
+       
                 <div class="requests-grid">
                     <div class="request-card">
                         <span class="request-icon">🍃</span>
@@ -93,7 +86,6 @@
         </div>
     </div>
 
-    <!-- NEW: Request Modal -->
     <div id="requestModal" class="modal-overlay" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
             <h3 id="modalTitle">Request</h3>

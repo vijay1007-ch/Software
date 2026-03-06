@@ -1,6 +1,3 @@
-/**
- * ISSNE - Add Staff Module
- */
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Add Staff JS Loaded");
@@ -11,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const age = document.getElementById("age");
     const exp = document.getElementById("experience");
 
-    // Check if editing
     const urlParams = new URLSearchParams(window.location.search);
     const editId = urlParams.get('edit');
     
@@ -19,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         loadStaffForEdit(editId);
     }
 
-    // Age Calculation
+
     if (dob) {
         dob.addEventListener("change", function () {
             const birth = new Date(this.value);
@@ -37,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Experience Calculation
     if (doj) {
         doj.addEventListener("change", function () {
             const join = new Date(this.value);
@@ -50,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Form Submit
     if (form) {
         form.addEventListener("submit", function (e) {
             e.preventDefault();

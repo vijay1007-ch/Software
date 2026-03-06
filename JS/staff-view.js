@@ -1,19 +1,17 @@
-// Your exact JS + SETTINGS logout style
+
 const API_BASE = "/api/staff";
 
 function getQueryParam(name) {
     return new URLSearchParams(window.location.search).get(name);
 }
 
-// SETTINGS.HTML EXACT LOGOUT ✅
 function logout() {
     if (confirm("🚪 Are you sure you want to logout?")) {
         localStorage.removeItem('currentUser');
         localStorage.removeItem('userRole');
-        
-        // Your paths + settings.html path
+   
         const loginPaths = [
-            '/HTML/loginpage.htm',  // Settings.html path
+            '/HTML/loginpage.htm',  
             'loginpage.html',
             './loginpage.html', 
             '../HTML/loginpage.html',
@@ -44,7 +42,6 @@ async function loadStaffData() {
         if (staff) {
             nameEl.textContent = staff.name || `Staff ${staffId}`;
             
-            // Your exact sample data
             document.getElementById("hoursWorked").textContent = "42h";
             document.getElementById("hoursNote").textContent = "This Week";
             document.getElementById("attendanceStatus").textContent = "Present";
@@ -71,4 +68,4 @@ async function loadStaffData() {
 }
 
 document.addEventListener('DOMContentLoaded', loadStaffData);
-window.logout = logout; // Global access
+window.logout = logout; 

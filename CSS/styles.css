@@ -1,32 +1,248 @@
-/* ISSNE Login Page Styles */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; min-height: 100vh; display: flex; justify-content: center; align-items: center; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); overflow: hidden; }
-body::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 80%, rgba(78, 205, 196, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(255, 193, 7, 0.05) 0%, transparent 30%); animation: backgroundPulse 8s ease-in-out infinite; }
-@keyframes backgroundPulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-.login-container { position: relative; z-index: 10; width: 100%; max-width: 420px; padding: 20px; }
-.login-box { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 40px; box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2); animation: slideUp 0.6s ease-out, float 6s ease-in-out infinite; animation-delay: 0s, 0.6s; }
-@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-.login-box h1 { text-align: center; color: #4ecdc4; font-size: 2.5rem; margin-bottom: 10px; animation: fadeIn 0.8s ease-out 0.2s both; text-shadow: 0 0 20px rgba(78, 205, 196, 0.5); }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.tagline { text-align: center; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; margin-bottom: 30px; animation: fadeIn 0.8s ease-out 0.4s both; }
-.form-group { margin-bottom: 25px; animation: slideIn 0.5s ease-out both; transition: transform 0.3s ease; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background:
+        radial-gradient(circle at 20% 80%, rgba(78,205,196,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,107,107,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255,193,7,0.05) 0%, transparent 30%);
+
+    animation: backgroundPulse 8s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.login-container {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+.login-box {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 25px 45px rgba(0,0,0,0.2);
+
+    animation: slideUp 0.6s ease-out, float 6s ease-in-out infinite;
+    animation-delay: 0s, 0.6s;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Title */
+.login-box h1 {
+    text-align: center;
+    color: #4ecdc4;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(78,205,196,0.5);
+
+    animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.tagline {
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+
+    animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.form-group {
+    margin-bottom: 25px;
+    animation: slideIn 0.5s ease-out both;
+    transition: transform 0.3s ease;
+}
+
 .form-group:nth-child(1) { animation-delay: 0.5s; }
 .form-group:nth-child(2) { animation-delay: 0.6s; }
-@keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
-.form-group label { display: block; color: #4ecdc4; margin-bottom: 8px; font-weight: 500; font-size: 0.95rem; }
-.form-group input { width: 100%; padding: 14px 16px; background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(78, 205, 196, 0.3); border-radius: 10px; color: #fff; font-size: 1rem; transition: all 0.3s ease; }
-.form-group input:focus { outline: none; border-color: #4ecdc4; box-shadow: 0 0 20px rgba(78, 205, 196, 0.2); background: rgba(255, 255, 255, 0.08); }
-.form-group input::placeholder { color: rgba(255, 255, 255, 0.4); }
-button.btn-primary { width: 100%; padding: 14px; background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%); border: none; border-radius: 10px; color: #1a1a2e; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; animation: fadeIn 0.8s ease-out 0.7s both; position: relative; overflow: hidden; }
-button.btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s ease; }
-button.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4); }
-button.btn-primary:hover::before { left: 100%; }
-.signup-link { text-align: center; margin-top: 25px; color: rgba(255, 255, 255, 0.7); animation: fadeIn 0.8s ease-out 0.8s both; }
-.signup-link a { color: #4ecdc4; text-decoration: none; font-weight: 600; transition: all 0.3s ease; position: relative; }
-.signup-link a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #4ecdc4; transition: width 0.3s ease; }
-.signup-link a:hover { color: #fff; text-shadow: 0 0 10px rgba(78, 205, 196, 0.8); }
-.signup-link a:hover::after { width: 100%; }
-@keyframes shake { 0%, 100% { transform: translateX(0); } 10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); } 20%, 40%, 60%, 80% { transform: translateX(5px); } }
-.shake { animation: shake 0.5s ease-in-out; }
-@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.form-group label {
+    display: block;
+    color: #4ecdc4;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid rgba(78,205,196,0.3);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    box-shadow: 0 0 20px rgba(78,205,196,0.2);
+    background: rgba(255,255,255,0.08);
+}
+
+.form-group input::placeholder {
+    color: rgba(255,255,255,0.4);
+}
+
+button.btn-primary {
+    width: 100%;
+    padding: 14px;
+
+    background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+    border: none;
+    border-radius: 10px;
+
+    color: #1a1a2e;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+    animation: fadeIn 0.8s ease-out 0.7s both;
+
+    position: relative;
+    overflow: hidden;
+}
+
+button.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+
+    transition: left 0.5s ease;
+}
+
+button.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(78,205,196,0.4);
+}
+
+button.btn-primary:hover::before {
+    left: 100%;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 25px;
+    color: rgba(255,255,255,0.7);
+
+    animation: fadeIn 0.8s ease-out 0.8s both;
+}
+
+.signup-link a {
+    color: #4ecdc4;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.signup-link a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+    background: #4ecdc4;
+
+    transition: width 0.3s ease;
+}
+
+.signup-link a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(78,205,196,0.8);
+}
+
+.signup-link a:hover::after {
+    width: 100%;
+}
+
+@keyframes shake {
+    0%,100% { transform: translateX(0); }
+    10%,30%,50%,70%,90% { transform: translateX(-5px); }
+    20%,40%,60%,80% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}

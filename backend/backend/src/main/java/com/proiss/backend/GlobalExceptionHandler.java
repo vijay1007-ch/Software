@@ -9,14 +9,9 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.time.LocalDateTime;
 
-/**
- * Global exception handler for the application.
- * Handles all exceptions thrown by the controllers.
- */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Handle Staff Not Found Exception
     @ExceptionHandler(StaffNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleStaffNotFoundException(
             StaffNotFoundException ex, WebRequest request) {
@@ -31,7 +26,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
-    // Handle Illegal Argument Exception
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgumentException(
             IllegalArgumentException ex, WebRequest request) {
@@ -46,7 +41,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    // Handle Resource Not Found (NullPointer scenarios)
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<ErrorResponse> handleNullPointerException(
             NullPointerException ex, WebRequest request) {
@@ -61,7 +55,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
-    // Handle NoHandlerFoundException - let Spring handle 404 for static resources
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<ErrorResponse> handleNoHandlerFoundException(
             NoHandlerFoundException ex, WebRequest request) {
@@ -77,15 +70,12 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
-    // Handle All Other Exceptions (Catch-all) - but exclude API errors only
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(
             Exception ex, WebRequest request) {
         
-        // Let Spring handle static resource 404s normally
         String path = request.getDescription(false).replace("uri=", "");
         
-        // Only handle API exceptions, let Spring handle static resources
         if (!path.startsWith("/api") && path.contains(".")) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }

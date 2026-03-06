@@ -1,6 +1,3 @@
-/**
- * ISSNE - Staff Management Module
- */
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Staff JS Loaded");
@@ -9,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 let currentIndex = -1;
 
-// Initialize DataSync
 DataSync.init();
 
 function displayStaff() {
@@ -67,7 +63,6 @@ function viewStaff(index) {
         return;
     }
     
-    // Fill Modal
     document.getElementById("modalName").textContent = staff.name || 'N/A';
     document.getElementById("modalPhoto").src = staff.photo || 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%234ecdc4" width="100" height="100"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="white" font-size="40">👤</text></svg>';
     document.getElementById("modalContact").textContent = staff.contact || 'N/A';
@@ -131,13 +126,11 @@ function closeModal() {
     document.body.style.overflow = "auto";
 }
 
-// Close modal on outside click
 window.onclick = function(event) {
     const modal = document.getElementById("staffModal");
     if (event.target === modal) closeModal();
 }
 
-// Export functions to global scope
 window.viewStaff = viewStaff;
 window.editStaff = editStaff;
 window.deleteStaff = deleteStaff;

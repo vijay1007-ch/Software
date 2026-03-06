@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const passwordInput = document.getElementById("password");
     const submitBtn = loginForm.querySelector(".btn-primary");
     
-    // Focus animations (KEEP EXISTING)
     [usernameInput, passwordInput].forEach(input => {
         input.addEventListener("focus", function() {
             this.parentElement.style.transform = "scale(1.02)";
@@ -37,11 +36,9 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-// TEMPORARY - Replace the fetch block in login.js
 async function authenticateUser(username, password) {
     const loginBox = document.querySelector(".login-box");
     
-    // Admin (existing)
     if (username === "admin" && password === "1234") {
         localStorage.setItem('currentUser', JSON.stringify({
             username: username, role: "admin", loginTime: new Date().toISOString()
@@ -50,7 +47,6 @@ async function authenticateUser(username, password) {
         return;
     }
     
-    // TEMP STAFF DATA (remove when backend works)
     const mockStaff = [
         { id: "STF001", password: "1234", name: "John Doe", status: "Present" },
         { id: "STF002", password: "abcd", name: "Jane Smith", status: "Absent" }
@@ -65,7 +61,7 @@ async function authenticateUser(username, password) {
         return;
     }
     
-    // Invalid
+  
     loginBox.classList.add("shake");
     setTimeout(() => loginBox.classList.remove("shake"), 500);
     alert("❌ Invalid Username or Password");

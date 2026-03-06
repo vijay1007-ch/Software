@@ -1,4 +1,4 @@
-/* ISSNE Attendance - Matching Original Theme */
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
@@ -75,7 +75,7 @@ body::before {
     padding: 0 20px;
 }
 
-/* Section Card */
+
 .section-card {
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(20px);
@@ -97,7 +97,7 @@ body::before {
     background-clip: text;
 }
 
-/* Attendance Card */
+
 .attendance-card {
     background: rgba(255,255,255,0.15);
     backdrop-filter: blur(20px);
@@ -222,7 +222,7 @@ body::before {
     font-weight: 600;
 }
 
-/* Status Message */
+
 .status-message {
     margin-top: 15px;
     padding: 12px;
@@ -242,7 +242,7 @@ body::before {
     border: 1px solid #d63031;
 }
 
-/* Today Stats */
+
 .today-stats {
     display: flex;
     justify-content: space-around;
@@ -270,7 +270,6 @@ body::before {
     font-size: 0.85em;
 }
 
-/* Attendance Table */
 .attendance-table {
     width: 100%;
     border-collapse: collapse;
@@ -315,7 +314,7 @@ body::before {
     color: #fdcb6e;
 }
 
-/* Filter Section */
+
 .filter-section {
     display: flex;
     gap: 12px;
@@ -348,7 +347,7 @@ body::before {
     box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Delete Section */
+
 .delete-section {
     border-left: 5px solid #ff7675;
 }
@@ -397,7 +396,6 @@ body::before {
     color: rgba(255,255,255,0.5);
 }
 
-/* Comet Navbar */
 .comet-navbar {
     background: rgba(20,20,40,0.95);
     backdrop-filter: blur(25px);
@@ -450,7 +448,6 @@ body::before {
     background: rgba(78,205,196,0.2);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .clock-buttons {
         flex-direction: column;

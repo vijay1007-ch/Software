@@ -2,9 +2,7 @@ package com.proiss.backend;
 
 import java.time.LocalDateTime;
 
-/**
- * Error response DTO for API errors.
- */
+
 public class ErrorResponse {
     
     private int status;
@@ -18,8 +16,7 @@ public class ErrorResponse {
         this.path = path;
         this.timestamp = timestamp;
     }
-    
-    // Getters and Setters
+
     public int getStatus() {
         return status;
     }

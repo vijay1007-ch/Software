@@ -1,6 +1,3 @@
-/**
- * ISSNE - Signup Module
- */
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("✅ Signup JS Loaded");
@@ -20,10 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
             
-            // Store user (in a real app, this would go to a server)
             const users = JSON.parse(localStorage.getItem("users")) || [];
-            
-            // Check if username exists
+       
             if (users.find(u => u.username === username)) {
                 alert("❌ Username already exists!");
                 return;

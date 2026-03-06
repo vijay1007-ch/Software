@@ -1,18 +1,13 @@
-/**
- * ISSNE - Dashboard Module
- */
+
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Dashboard JS Loaded");
-    
-    // Initialize DataSync
-    DataSync.init();
-    
-    // Load data
+   
+    DataSync.init(); 
+  
     loadDashboardStats();
     loadRecentStaff();
     
-    // Update last sync time
     document.getElementById("lastUpdated").textContent = new Date().toLocaleTimeString();
 });
 
@@ -25,7 +20,6 @@ function loadDashboardStats() {
     const attendance = DataSync.getAttendance().filter(a => a.date === today);
     const present = attendance.length;
     
-    // Update stats
     document.getElementById("totalStaff").textContent = staff.length;
     document.getElementById("totalProjects").textContent = projects.length;
     document.getElementById("totalMachines").textContent = machines.length;
@@ -34,7 +28,7 @@ function loadDashboardStats() {
 
 function loadRecentStaff() {
     const staff = DataSync.getStaff();
-    const recentStaff = staff.slice(-4).reverse(); // Last 4 staff
+    const recentStaff = staff.slice(-4).reverse();
     
     const grid = document.getElementById("recentStaffGrid");
     
@@ -59,6 +53,5 @@ function loadRecentStaff() {
     `).join('');
 }
 
-// Export functions
 window.loadDashboardStats = loadDashboardStats;
 window.loadRecentStaff = loadRecentStaff;

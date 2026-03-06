@@ -75,7 +75,6 @@ body::before {
     padding: 0 20px;
 }
 
-/* Section Card */
 .section-card {
     background: rgba(255,255,255,0.1);
     backdrop-filter: blur(20px);
@@ -97,7 +96,6 @@ body::before {
     background-clip: text;
 }
 
-/* Settings Form */
 .settings-form {
     display: flex;
     flex-direction: column;
@@ -147,7 +145,6 @@ body::before {
     font-size: 0.85em;
 }
 
-/* Glow Buttons */
 .btn-group {
     display: flex;
     justify-content: center;
@@ -195,7 +192,6 @@ body::before {
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
 }
 
-/* Data Stats */
 .data-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -227,7 +223,6 @@ body::before {
     color: rgba(255,255,255,0.6);
 }
 
-/* Data Actions */
 .data-actions {
     display: flex;
     gap: 15px;
@@ -237,7 +232,6 @@ body::before {
     border-top: 1px solid rgba(255,255,255,0.1);
 }
 
-/* System Info */
 .system-info {
     background: rgba(0,0,0,0.2);
     border-radius: 15px;
@@ -264,7 +258,6 @@ body::before {
     font-weight: 500;
 }
 
-/* About Section */
 .about-section p {
     color: rgba(255,255,255,0.7);
     line-height: 1.6;
@@ -276,7 +269,6 @@ body::before {
     margin-bottom: 0;
 }
 
-/* Comet Navbar */
 .comet-navbar {
     background: rgba(20,20,40,0.95);
     backdrop-filter: blur(25px);
@@ -329,7 +321,6 @@ body::before {
     background: rgba(78,205,196,0.2);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .form-row {
         grid-template-columns: 1fr;

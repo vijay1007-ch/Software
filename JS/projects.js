@@ -1,6 +1,4 @@
-/**
- * ISSNE - Projects Module
- */
+
 
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ Projects JS Loaded");
@@ -8,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     updateStats();
 });
 
-// Project Form
 const projectForm = document.getElementById("projectForm");
 if (projectForm) {
     projectForm.addEventListener("submit", function(e) {
@@ -117,7 +114,6 @@ function updateStats() {
     document.getElementById("totalBudget").textContent = '₹' + totalBudget.toLocaleString();
 }
 
-// Make functions global
 window.clearProjectForm = clearProjectForm;
 window.deleteProject = deleteProject;
 window.filterProjects = filterProjects;

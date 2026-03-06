@@ -1,11 +1,8 @@
-/**
- * ISSNE - Salary Module
- */
 
 document.addEventListener("DOMContentLoaded", function() {
     console.log("✅ Salary JS LOADED");
-    
-    // Get Elements
+ 
+ 
     const totalHours = document.getElementById("totalHours");
     const otHours = document.getElementById("otHours");
     const calculateBtn = document.getElementById("calculateBtn");
@@ -16,8 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const performanceStatus = document.getElementById("performanceStatus");
     const staffSelect = document.getElementById("staffSelect");
     
-    // Load staff into select
-    if (staffSelect) {
+  if (staffSelect) {
         const staff = DataSync.getStaff();
         staff.forEach(s => {
             const option = document.createElement("option");
@@ -27,15 +23,13 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     
-    // Display saved records
-    displayRecords();
+     displayRecords();
     
-    // Button Event Listeners
     if (calculateBtn) calculateBtn.addEventListener("click", calculateSalary);
     if (predictBtn) predictBtn.addEventListener("click", predictSalary);
     if (saveBtn) saveBtn.addEventListener("click", saveRecord);
     
-    // Auto calculate on input change
+    
     if (totalHours) totalHours.addEventListener("input", calculateSalary);
     if (otHours) otHours.addEventListener("input", calculateSalary);
     
@@ -50,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const otPay = ot * otRate;
         const total = regularPay + otPay;
         
-        // Update Display
+      
         if (currentSalary) currentSalary.textContent = `₹${total.toLocaleString('en-IN')}`;
         if (performanceStatus) performanceStatus.textContent = getPerformance(hours + ot);
         
@@ -83,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
             date: new Date().toISOString().split('T')[0]
         };
         
-        // Save to localStorage
+      
         let records = DataSync.getSalaryRecords();
         records.push(record);
         localStorage.setItem("salaryRecords", JSON.stringify(records));
@@ -126,11 +120,10 @@ document.addEventListener("DOMContentLoaded", function() {
         `).join('');
     }
     
-    // Initial calculation
+  
     calculateSalary();
 });
 
-// Global functions
 window.deleteRecord = function(index) {
     if (confirm("🗑️ Delete this salary record?")) {
         const records = JSON.parse(localStorage.getItem("salaryRecords")) || [];
