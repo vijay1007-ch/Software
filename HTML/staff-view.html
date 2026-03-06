@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISSNE Staff Portal</title>
+    <link rel="stylesheet" href="/CSS/staff-view.css">
+</head>
+<body>
+    <div class="staff-page">
+        <!-- ISSNE Top Logo -->
+        <div class="issne-logo">
+            <h1>ISSNE</h1>
+        </div>
+
+        <div class="staff-card-container">
+            <!-- Staff Header -->
+            <div class="staff-header">
+                <button class="logout-btn-staff glow-btn danger" onclick="logout()">🚪 Logout</button>
+                <h2 id="staffNameHeader">Loading...</h2>
+                <p class="staff-id" id="staffIdDisplay">-</p>
+            </div>
+
+            <!-- Stats Grid (6 Cards) -->
+            <div class="stats-grid-perfect">
+                <!-- Your 6 cards remain exactly same -->
+                <div class="stat-card-perfect">
+                    <span class="stat-icon-perfect">⏱️</span>
+                    <div class="stat-number-perfect" id="hoursWorked">0h</div>
+                    <div class="stat-label-perfect">Hours Worked</div>
+                    <div class="update-text-perfect" id="hoursNote">Today</div>
+                </div>
+                <div class="stat-card-perfect">
+                    <span class="stat-icon-perfect">📅</span>
+                    <div class="stat-number-perfect" id="attendanceStatus">Pending</div>
+                    <div class="stat-label-perfect">Attendance</div>
+                    <div class="update-text-perfect" id="attendanceNote">Status</div>
+                </div>
+                <div class="stat-card-perfect">
+                    <span class="stat-icon-perfect">💰</span>
+                    <div class="stat-number-perfect" id="salaryAmount">₹0</div>
+                    <div class="stat-label-perfect">Salary</div>
+                    <div class="update-text-perfect" id="salaryNote">Current Month</div>
+                </div>
+                <div class="stat-card-perfect">
+                    <span class="stat-icon-perfect">🔐</span>
+                    <div class="stat-number-perfect" id="lastLoginTime">-</div>
+                    <div class="stat-label-perfect">Last Login</div>
+                    <div class="update-text-perfect" id="lastLoginNote">-</div>
+                </div>
+                <div class="stat-card-perfect">
+                    <span class="stat-icon-perfect">📄</span>
+                    <div class="stat-number-perfect" id="payslipStatus">Pending</div>
+                    <div class="stat-label-perfect">Pay Slip</div>
+                    <div class="update-text-perfect" id="payslipNote">Latest</div>
+                </div>
+                <div class="stat-card-perfect">
+                    <span class="stat-icon-perfect">🌿</span>
+                    <div class="stat-number-perfect" id="leavesBalance">0</div>
+                    <div class="stat-label-perfect">Leaves</div>
+                    <div class="update-text-perfect" id="leavesNote">Balance</div>
+                </div>
+            </div>
+
+            <!-- NEW REQUEST BUTTONS + Requests Section -->
+            <div class="requests-section">
+                <!-- NEW: Request Buttons -->
+                <div class="request-buttons">
+                    <button class="glow-btn primary" onclick="openLeaveRequest()">🍃 Request Leave</button>
+                    <button class="glow-btn export" onclick="openSalaryAdvance()">💸 Salary Advance</button>
+                </div>
+
+                <!-- Requests Header -->
+                <h3>📋 My Requests</h3>
+                
+                <!-- Requests Grid -->
+                <div class="requests-grid">
+                    <div class="request-card">
+                        <span class="request-icon">🍃</span>
+                        <div class="request-title">Leave Request</div>
+                        <div class="request-status granted" id="leaveStatus">Granted</div>
+                        <div class="request-date" id="leaveDate">Applied: Mar 10-12, 2026</div>
+                    </div>
+
+                    <div class="request-card">
+                        <span class="request-icon">💸</span>
+                        <div class="request-title">Salary Advance</div>
+                        <div class="request-status denied" id="advanceStatus">Denied</div>
+                        <div class="request-date" id="advanceDate">Applied: Mar 5, 2026 | ₹15,000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NEW: Request Modal -->
+    <div id="requestModal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 id="modalTitle">Request</h3>
+            <div class="modal-form">
+                <div class="form-group">
+                    <label id="modalLabel">Select Dates</label>
+                    <input type="date" id="dateFrom" required>
+                    <input type="date" id="dateTo" required>
+                </div>
+                <div class="form-group" id="amountGroup" style="display: none;">
+                    <label>Amount (₹)</label>
+                    <input type="number" id="advanceAmount" placeholder="15000" min="1000" max="50000">
+                </div>
+                <div class="modal-buttons">
+                    <button class="glow-btn primary" onclick="submitRequest()">✅ Submit Request</button>
+                    <button class="glow-btn" onclick="closeModal()">❌ Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/staff-view.js"></script>
+</body>
+</html>

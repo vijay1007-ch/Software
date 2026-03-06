@@ -38,6 +38,10 @@ public class StaffService {
     }
 
     public Staff updateStaff(Long id, Staff staffDetails) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("Invalid staff ID: " + id);
+        }
+        
         Staff staff = staffRepository.findById(id)
                 .orElseThrow(() -> new StaffNotFoundException("Staff not found with ID: " + id));
         
@@ -61,6 +65,9 @@ public class StaffService {
     }
 
     public void deleteStaff(Long id) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("Invalid staff ID: " + id);
+        }
         if (!staffRepository.existsById(id)) {
             throw new StaffNotFoundException("Cannot delete: Staff not found with ID: " + id);
         }

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ISSNE Dashboard</title>
     <link rel="stylesheet" href="/CSS/dashboard.css">
 </head>
@@ -30,43 +32,51 @@
         </div>
 
         <!-- Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <span class="stat-icon">👥</span>
-                <div class="stat-number" id="totalStaff">0</div>
-                <div class="stat-label">Total Staff</div>
-                <div class="stat-action">
-                    <a href="staff.html">View All →</a>
-                </div>
-            </div>
-            <div class="stat-card">
-                <span class="stat-icon">📋</span>
-                <div class="stat-number" id="totalProjects">0</div>
-                <div class="stat-label">Projects</div>
-                <div class="stat-action">
-                    <a href="projects.html">View All →</a>
-                </div>
-            </div>
-            <div class="stat-card">
-                <span class="stat-icon">⚙️</span>
-                <div class="stat-number" id="totalMachines">0</div>
-                <div class="stat-label">Machines</div>
-                <div class="stat-action">
-                    <a href="machinedetails.html">View All →</a>
-                </div>
-            </div>
-            <div class="stat-card">
-                <span class="stat-icon">✅</span>
-                <div class="stat-number" id="presentToday">0</div>
-                <div class="stat-label">Present Today</div>
-                <div class="stat-action">
-                    <a href="attendance.html">View →</a>
-                </div>
+    <!-- Stats Section - Flex Layout -->
+<div class="stats-section">
+    <div class="stats-matrix">
+        <div class="stat-card" id="card-staff">
+            <span class="stat-icon">👥</span>
+            <div class="stat-number" id="totalStaff">124</div>
+            <div class="stat-label">Total Staff</div>
+            <div class="stat-updates">
+                <span class="update-text">+5 today</span>
             </div>
         </div>
+        
+        <div class="stat-card" id="card-projects">
+            <span class="stat-icon">📋</span>
+            <div class="stat-number" id="totalProjects">28</div>
+            <div class="stat-label">Projects</div>
+            <div class="stat-updates">
+                <span class="update-text">2 active</span>
+            </div>
+        </div>
+        
+        <div class="stat-card" id="card-machines">
+            <span class="stat-icon">⚙️</span>
+            <div class="stat-number" id="totalMachines">67</div>
+            <div class="stat-label">Machines</div>
+            <div class="stat-updates">
+                <span class="update-text">65 online</span>
+            </div>
+        </div>
+        
+        <div class="stat-card" id="card-present">
+            <span class="stat-icon">✅</span>
+            <div class="stat-number" id="presentToday">89</div>
+            <div class="stat-label">Today Present</div>
+            <div class="stat-updates">
+                <span class="update-text">89% rate</span>
+            </div>
+        </div>
+    </div>
+</div>
 
-        <!-- Quick Actions -->
-        <div class="quick-actions">
+<br>
+
+        <!-- Quick Actions -->̥
+        <div class="quick-actions">̥
             <h2>⚡ Quick Actions</h2>
             <div class="action-grid">
                 <div class="action-card" onclick="location.href='addstaff.html'">
@@ -93,33 +103,30 @@
                     <span class="action-icon">⚙️</span>
                     <span>Settings</span>
                 </div>
-            </div>
         </div>
-
+<br>
         <!-- Recent Staff -->
         <div class="recent-activity">
             <h2>👥 Recent Staff</h2>
             <div class="recent-staff-grid" id="recentStaffGrid">
-                <!-- JS populates -->
+                <!-- JS populates --><br>
             </div>
-        </div>
-
+<br>
         <!-- Sync Status -->
         <div class="sync-status">
             <div class="sync-card">
                 <h3>🔄 Data Sync Status</h3>
                 <div class="sync-info">
-                    <div class="sync-item">
-                        <span class="sync-label">Staff Data:</span>
+                    <div class="sync-item"><br>
+                        <span class="sync-label">Staff Data:</span><br><br>
                         <span class="sync-value status-ok">✓ Synced</span>
                     </div>
+                    <br>
                     <div class="sync-item">
                         <span class="sync-label">Last Updated:</span>
                         <span class="sync-value" id="lastUpdated">Just now</span>
                     </div>
-                </div>
             </div>
-        </div>
     </div>
 
     <script src="/JS/datasync.js"></script>

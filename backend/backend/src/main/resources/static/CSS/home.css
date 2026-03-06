@@ -1,0 +1,123 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Layout */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #00b09b, #96c93d);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    flex: 1; /* THIS REMOVES EXTRA SPACE */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    max-width: 700px;
+    margin-bottom: 30px;
+}
+
+/* Button */
+.btn {
+    padding: 12px 25px;
+    background: white;
+    color: #00b09b;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: black;
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.view-btn {
+    padding: 8px 16px;
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.view-btn:hover {
+    background: linear-gradient(90deg, #15803d, #16a34a);
+}
+
+/* ISSNE Landing - Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120,119,198,0.4) 0%, transparent 50%),
+        linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.hero-content h1 {
+    font-size: 4.5em;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from { filter: drop-shadow(0 0 20px #ff6b6b); }
+    to { filter: drop-shadow(0 0 30px #4ecdc4); }
+}
+.hero-content p {
+    font-size: 1.5em;
+    max-width: 600px;
+    margin: auto;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

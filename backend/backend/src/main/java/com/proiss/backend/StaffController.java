@@ -54,4 +54,16 @@ public class StaffController {
                     .body("Error deleting staff: " + e.getMessage());
         }
     }
+    @GetMapping("/list")
+     public ResponseEntity<List<Staff>> getStaffList() {
+    try {
+        List<Staff> staffList = staffService.getAllStaff();
+        return ResponseEntity.ok(staffList);
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+    }
 }
+
+
+}
+

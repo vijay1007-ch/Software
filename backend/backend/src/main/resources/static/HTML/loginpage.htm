@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ISSNE - Login</title>
+    <link rel="stylesheet" href="/CSS/styles.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Staff Management Login</h2>
+    
+    <form id="loginForm">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter username" required/>
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+        
+        <button type="submit">Login</button>
+    </form>
+    
+    <p id="message"></p>
+    
+    <p class="login-link">
+        No account? <a href="/HTML/signup.html">Sign Up</a>
+    </p>
+    
+    <p style="color: #ff0000; font-weight: bold; margin-top: 20px;">
+        ⚠️ Warning: Unauthorized access is prohibited!!
+    </p>
+</div>
+
+<script src="/JS/login.js"></script>
+
+</body>
+</html>

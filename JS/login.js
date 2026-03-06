@@ -1,39 +1,86 @@
-/**
- * ISSNE - Login Module
- */
-
 document.addEventListener("DOMContentLoaded", function() {
     console.log("✅ Login JS Loaded");
     
     const loginForm = document.getElementById("loginForm");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const submitBtn = loginForm.querySelector(".btn-primary");
+    
+    // Focus animations (KEEP EXISTING)
+    [usernameInput, passwordInput].forEach(input => {
+        input.addEventListener("focus", function() {
+            this.parentElement.style.transform = "scale(1.02)";
+            this.parentElement.style.transition = "transform 0.3s ease";
+        });
+        input.addEventListener("blur", function() {
+            this.parentElement.style.transform = "scale(1)";
+        });
+    });
     
     if (loginForm) {
-        loginForm.addEventListener("submit", function(e) {
+        loginForm.addEventListener("submit", async function(e) {
             e.preventDefault();
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+            submitBtn.classList.add("btn-loading");
+            submitBtn.textContent = "Validating";
             
-            const username = document.getElementById("username").value;
-            const password = document.getElementById("password").value;
-            
-            authenticateUser(username, password);
+            try {
+                await authenticateUser(username, password);
+            } catch (error) {
+                console.error("Login error:", error);
+            } finally {
+                submitBtn.classList.remove("btn-loading");
+                submitBtn.textContent = "Login";
+            }
         });
     }
 });
 
-function authenticateUser(username, password) {
-    // Demo credentials
-    const validUser = "admin";
-    const validPass = "1234";
+// TEMPORARY - Replace the fetch block in login.js
+async function authenticateUser(username, password) {
+    const loginBox = document.querySelector(".login-box");
     
-    if (username === validUser && password === validPass) {
-        // Store login session
+    // Admin (existing)
+    if (username === "admin" && password === "1234") {
         localStorage.setItem('currentUser', JSON.stringify({
-            username: username,
-            loginTime: new Date().toISOString()
+            username: username, role: "admin", loginTime: new Date().toISOString()
         }));
-        
-        alert("✅ Login Successful!");
-        window.location.href = "dashboard.html";
-    } else {
-        alert("❌ Invalid Username or Password");
+        showSuccess("Dashboard access granted!", "dashboard.html");
+        return;
     }
+    
+    // TEMP STAFF DATA (remove when backend works)
+    const mockStaff = [
+        { id: "STF001", password: "1234", name: "John Doe", status: "Present" },
+        { id: "STF002", password: "abcd", name: "Jane Smith", status: "Absent" }
+    ];
+    
+    const staff = mockStaff.find(s => s.id === username && s.password === password);
+    if (staff) {
+        localStorage.setItem('currentUser', JSON.stringify({
+            username: staff.id, role: "staff", fullName: staff.name, loginTime: new Date().toISOString()
+        }));
+        showSuccess("Staff portal access granted!", `/HTML/staff-view.html?staffId=${staff.id}`);
+        return;
+    }
+    
+    // Invalid
+    loginBox.classList.add("shake");
+    setTimeout(() => loginBox.classList.remove("shake"), 500);
+    alert("❌ Invalid Username or Password");
+}
+
+
+function showSuccess(message, redirectUrl) {
+    const loginBox = document.querySelector(".login-box");
+    loginBox.style.animation = "slideUp 0.5s ease-out";
+    loginBox.innerHTML = `
+        <div class="success-container">
+            <div class="success-icon">✅</div>
+            <h2 class="success-title">Login Successful!</h2>
+            <p class="success-message">${message}</p>
+        </div>
+    `;
+    setTimeout(() => { window.location.href = redirectUrl; }, 1500);
 }

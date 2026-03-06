@@ -1,36 +1,40 @@
+<!-- login.html (minimal change - just add hint) -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>ISSNE - Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISSNE - Login</title>̥
     <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/signup.css">
 </head>
 <body>
+    <div class="login-container">
+        <div class="login-box">̥
+            <h1>ISSNE</h1>
+            <p class="tagline">Industrial Staff Sync Network Environment</p>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">👤 Username / Staff ID</label>
+                    <input type="text" id="username" name="username" placeholder="admin or STF001" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">🔑 Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+            
+            <p class="signup-link">
+                Don't have an account? <a href="/HTML/signup.html">Sign Up</a>̥
+            </p>
+        </div>
+    </div>
 
-<div class="login-container">
-    <h2>Staff Management Login</h2>
-    
-    <form id="loginForm">
-        <label for="username">Username</label>
-        <input type="text" id="username" placeholder="Enter username" required/>
-        
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Enter password" required />
-        
-        <button type="submit">Login</button>
-    </form>
-    
-    <p id="message"></p>
-    
-    <p class="login-link">
-        No account? <a href="/HTML/signup.html">Sign Up</a>
-    </p>
-    
-    <p style="color: #ff0000; font-weight: bold; margin-top: 20px;">
-        ⚠️ Warning: Unauthorized access is prohibited!!
-    </p>
-</div>
-
-<script src="/JS/login.js"></script>
-
+    <script src="/JS/login.js"></script>
 </body>
 </html>
+̥̥

@@ -1,0 +1,353 @@
+/* ISSNE Salary - Matching Original Theme */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a0033 50%, #0f0f23 100%);
+    background-attachment: fixed;
+    margin: 0;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%);
+    animation: cometFloat 20s infinite linear;
+    z-index: -1;
+}
+
+@keyframes cometFloat {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+
+.comet-bg {
+    padding: 20px 0;
+}
+
+.hero-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    padding: 20px;
+}
+
+.hero-header::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    border-radius: 2px;
+}
+
+.hero-header h1 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+.hero-header p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1em;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Section Card */
+.section-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    padding: 30px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+.section-card h3 {
+    margin-bottom: 20px;
+    font-size: 1.3em;
+    color: white;
+    text-align: center;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Staff Selector */
+.modern-select {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 50px;
+    border: 2px solid rgba(78,205,196,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%234ecdc4' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+}
+
+.modern-select:focus {
+    outline: none;
+    border-color: #4ecdc4;
+}
+
+/* Calculator Grid */
+.calc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.calc-input label {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95em;
+}
+
+.calc-input input {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(78,205,196,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.calc-input input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+}
+
+/* Button Row */
+.btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.glow-btn {
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.glow-btn.calc {
+    background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+    color: white;
+    box-shadow: 0 10px 30px rgba(78,205,196,0.4);
+}
+
+.glow-btn.pred {
+    background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+    color: white;
+    box-shadow: 0 10px 30px rgba(162,155,254,0.4);
+}
+
+.glow-btn.save {
+    background: linear-gradient(45deg, #00b894, #00cec9);
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,206,201,0.4);
+}
+
+.glow-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* Results Section */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.result-card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.result-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.result-card h4 {
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.salary-amount {
+    font-size: 1.8em;
+    font-weight: 800;
+}
+
+.result-card.current .salary-amount {
+    color: #4ecdc4;
+}
+
+.result-card.predicted .salary-amount {
+    color: #a29bfe;
+}
+
+.result-card.performance .salary-amount {
+    color: #fdcb6e;
+}
+
+/* Records Table */
+.records-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.records-table th,
+.records-table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.records-table th {
+    background: rgba(0,0,0,0.2);
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+}
+
+.records-table tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.records-table td {
+    color: white;
+}
+
+/* Comet Navbar */
+.comet-navbar {
+    background: rgba(20,20,40,0.95);
+    backdrop-filter: blur(25px);
+    padding: 15px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+    margin: -20px -20px 20px -20px;
+}
+
+.nav-brand h2 {
+    color: #4ecdc4;
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: rgba(255,255,255,0.9);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 15px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.nav-links a:hover {
+    color: #4ecdc4;
+    background: rgba(78,205,196,0.2);
+}
+
+.nav-links a.active {
+    color: #4ecdc4;
+    background: rgba(78,205,196,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calc-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .glow-btn {
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .records-table {
+        font-size: 0.85em;
+    }
+    
+    .records-table th,
+    .records-table td {
+        padding: 8px 5px;
+    }
+    
+    .comet-navbar { 
+        padding: 15px 20px; 
+        flex-direction: column; 
+        gap: 15px; 
+    }
+}

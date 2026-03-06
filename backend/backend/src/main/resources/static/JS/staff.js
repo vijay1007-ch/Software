@@ -58,7 +58,7 @@ function createStaffCard(staff, index) {
 }
 
 function viewStaff(index) {
-    console.log(` Viewing staff ${index}`);
+    console.log(`👁️ Viewing staff ${index}`);
     const staffList = DataSync.getStaff();
     const staff = staffList[index];
     
@@ -98,6 +98,7 @@ function editStaff(index) {
         return;
     }
     
+    // Redirect to addstaff.html with edit parameter
     window.location.href = `addstaff.html?edit=${staff.id}`;
 }
 
