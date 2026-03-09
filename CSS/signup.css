@@ -5,86 +5,176 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2ecc71);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a0033 50%, #0f0f23 100%);
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background animation matching staff-view */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%);
+    animation: cometFloat 20s infinite linear;
+    z-index: -1;
+}
+
+@keyframes cometFloat {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
 }
 
 .signup-container {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(25px);
     padding: 40px;
-    width: 400px;
-    border-radius: 12px;
-    box-shadow: 0 0 30px rgba(46, 204, 113, 0.6);
-    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 420px;
+    border-radius: 25px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.25);
 }
 
 .signup-container h2 {
     text-align: center;
-    color: #2ecc71;
-    margin-bottom: 25px;
+    color: white;
+    margin-bottom: 30px;
+    font-size: 2em;
+    background: linear-gradient(45deg, #4ecdc4, #45b7d1, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .signup-container label {
-    color: white;
-    font-weight: bold;
+    color: rgba(255,255,255,0.95);
+    font-weight: 600;
+    font-size: 0.95em;
+    margin-bottom: 8px;
+    display: block;
 }
 
 .signup-container input {
     width: 100%;
-    padding: 12px;
-    margin: 8px 0 18px 0;
-    border-radius: 6px;
-    border: none;
-    font-size: 14px;
+    padding: 15px 18px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(78,205,196,0.4);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    font-size: 1em;
+    font-family: 'Segoe UI', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.signup-container input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+    box-shadow: 0 0 20px rgba(78,205,196,0.3);
+    background: rgba(255,255,255,0.18);
+}
+
+.signup-container input::placeholder {
+    color: rgba(255,255,255,0.5);
 }
 
 .signup-container button {
     width: 100%;
-    padding: 12px;
-    border-radius: 6px;
+    padding: 16px;
+    border-radius: 25px;
     border: none;
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 1.1em;
+    font-weight: 700;
     cursor: pointer;
-    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    background: linear-gradient(45deg, #4ecdc4, #45b7d1);
     color: white;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(78,205,196,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .signup-container button:hover {
-    transform: scale(1.05);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(78,205,196,0.6);
 }
 
 .login-link {
-    margin-top: 15px;
+    margin-top: 25px;
     text-align: center;
-    color: white;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.95em;
 }
 
 .login-link a {
-    color: #2ecc71;
+    color: #4ecdc4;
     text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
 }
 
 #message {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+#message.success {
+    background: rgba(78,205,196,0.3);
+    color: #4ecdc4;
+    border: 1px solid #4ecdc4;
+}
+
+#message.error {
+    background: rgba(255,107,107,0.3);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
 }
 
 .view-btn {
-    padding: 8px 16px;
-    background: linear-gradient(90deg, #16a34a, #22c55e);
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #a29bfe, #6c5ce7);
     color: white;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 25px;
     font-weight: 600;
-    transition: 0.3s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(162,155,254,0.4);
+    margin-top: 15px;
 }
 
 .view-btn:hover {
-    background: linear-gradient(90deg, #15803d, #16a34a);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(162,155,254,0.6);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .signup-container {
+        margin: 20px;
+        padding: 30px 25px;
+    }
+    
+    body {
+        padding: 10px;
+    }
 }
