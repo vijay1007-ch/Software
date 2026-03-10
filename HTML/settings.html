@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Settings - ISSNE</title>
-    <link rel="stylesheet" href="/CSS/dashboard.css">
+    <link rel="stylesheet" href="../CSS/dashboard.css">
 </head>
 <body>
 
@@ -11,14 +11,14 @@
             <h2>🚀 ISSNE</h2>
         </div>
         <ul class="nav-links">
-            <li><a href="/HTML/dashboard.html">📊 Dashboard</a></li>
-            <li><a href="/HTML/addstaff.html">➕ Add Staff</a></li>
-            <li><a href="/HTML/attendance.html">📋 Attendance</a></li>
-            <li><a href="/HTML/salary.html">💰 Salary</a></li>
-            <li><a href="/HTML/staff.html">👥 Staff</a></li>
-            <li><a href="/HTML/projects.html">📋 Projects</a></li>
-            <li><a href="/HTML/machinedetails.html">⚙️ Machines</a></li>
-            <li><a href="/HTML/settings.html" class="active">⚙️ Settings</a></li>
+            <li><a href="../HTML/dashboard.html">📊 Dashboard</a></li>
+            <li><a href="../HTML/addstaff.html">➕ Add Staff</a></li>
+            <li><a href="../HTML/attendance.html">📋 Attendance</a></li>
+            <li><a href="../HTML/salary.html">💰 Salary</a></li>
+            <li><a href="../HTML/staff.html">👥 Staff</a></li>
+            <li><a href="../HTML/projects.html">📋 Projects</a></li>
+            <li><a href="../HTML/machinedetails.html">⚙️ Machines</a></li>
+            <li><a href="../HTML/settings.html" class="active">⚙️ Settings</a></li>
         </ul>
     </nav>
 
@@ -88,13 +88,13 @@
 
     <input type="file" id="importFile" accept=".json" style="display: none;">
 
-    <script src="/JS/datasync.js"></script>
-    <script src="/JS/settings.js"></script>
+    <script src="../JS/datasync.js"></script>
+    <script src="../JS/settings.js"></script>
     <script>
         function logout() {
             if (confirm("Are you sure you want to logout?")) {
                 localStorage.removeItem('currentUser');
-                window.location.href = '/HTML/loginpage.htm';
+                window.location.href = '../HTML/loginpage.html';
             }
         }
     </script>
